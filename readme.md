@@ -20,7 +20,7 @@ Per prima cosa dovrai clonare la in locale la repository di IMEO - Instant Messa
 
 >
 
-Seguentemente effettua l'installazione :
+Seguentemente effettua l'installazione (controlla di essere nella directory giusta "IMEO"):
 
 > npm install
 
