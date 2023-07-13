@@ -18,7 +18,7 @@ Bacheca:
 
 Per prima cosa dovrai clonare la in locale la repository di IMEO - Instant Message Editor Online
 
->
+> git clone https://github.com/GabrieleBarberio/imeo.git .
 
 Seguentemente effettua l'installazione (controlla di essere nella directory giusta "IMEO"):
 
