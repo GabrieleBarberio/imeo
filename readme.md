@@ -34,6 +34,6 @@ on branch staging
 
 > git fetch
 
-> git pull origin stagin
+> git pull origin staging
 
 > git checkout -b "nome branch seguendo la convenzione"
