@@ -1,4 +1,5 @@
 import { PrimaryBtn } from "../component/shared/PrimaryBtn";
+import { RoundedBtn } from "../component/shared/RoundedBtn";
 
 export const DesignSystem = () => {
   const handleClick = () => {
@@ -6,7 +7,10 @@ export const DesignSystem = () => {
   };
   return (
     <>
-      <PrimaryBtn content="Live Editor" handleClick={handleClick} />
+      <div className="flex">
+        <PrimaryBtn content="Live Editor" handleClick={handleClick} />
+        <RoundedBtn content="vid" handleClick={handleClick} />
+      </div>
     </>
   );
 };
