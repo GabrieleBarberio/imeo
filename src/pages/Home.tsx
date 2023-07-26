@@ -13,7 +13,6 @@ export const Home = () => {
         <p className="text-lg font-paragraph mx-auto w-96 text-gray-500 lg:text-xl dark:text-gray-400">
           Here is the first Home Page from Imeo project!
         </p>
-        <CallToAction />
       </div>
     </>
   );
