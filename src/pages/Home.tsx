@@ -1,5 +1,3 @@
-import { CallToAction } from "../component/CallToAction";
-
 export const Home = () => {
   return (
     <>
