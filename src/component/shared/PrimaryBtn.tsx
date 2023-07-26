@@ -1,7 +1,8 @@
+import React from "react";
 import { twMerge } from "tailwind-merge";
 
 interface PrimaryBtnProps {
-  content: string;
+  content: React.ReactNode;
   handleClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   className?: string;
 }
@@ -11,7 +12,7 @@ export const PrimaryBtn = (props: PrimaryBtnProps) => {
     <>
       <button
         className={twMerge(
-          " max-h-[40px] px-5 py-2 whitespace-nowrap rounded-[2rem] break-normal text-white font-bold hover:bg-primary-200 hover:border-primary-500 hover:border-1 bg-primary-400"
+          " max-h-[40px] px-5 py-2 rounded-[2rem] break-normal text-white font-bold hover:bg-white hover:text-primary-400 outline-2 outline-primary-400 hover:outline-2 bg-primary-400"
         )}
         onClick={props.handleClick}
       >

@@ -15,7 +15,7 @@ export default {
       transparent: "transparent",
       current: "currentColor",
       white: " #FFFDFA",
-      black: {
+      blacky: {
         100: "#121523",
         200: "#1d1f26",
       },
