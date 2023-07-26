@@ -11,7 +11,7 @@ export const SiteBtn = (props: SiteBtnProps) => {
     <>
       <button
         className={twMerge(
-          " max-w-[250px] px-5 py-2 rounded-md max-h-[75px] text-white font-bold bg-secondary-100"
+          " max-h-[40px]  px-5 py-2 rounded-md  text-white font-bold bg-secondary-100"
         )}
         onClick={props.handleClick}
       >

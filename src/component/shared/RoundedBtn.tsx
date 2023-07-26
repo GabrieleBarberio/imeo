@@ -11,7 +11,7 @@ export const RoundedBtn = (props: PrimaryBtnProps) => {
     <>
       <button
         className={twMerge(
-          " max-w-[250px] px-2 py-2 rounded-[50%] max-h-[75px] text-white font-bold bg-primary-400  hover:bg-primary-200 hover:border-primary-500 hover:border-1"
+          " max-h-[40px] px-2 py-1 rounded-[50%]  text-white font-bold bg-primary-400  hover:bg-primary-200 hover:border-primary-500 hover:border-1"
         )}
         onClick={props.handleClick}
       >
