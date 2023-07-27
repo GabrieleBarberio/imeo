@@ -7,7 +7,7 @@ import { Navbar } from "./component/shared/Navbar";
 import { Services } from "./pages/Services";
 import { Contact } from "./pages/Contact";
 import { DesignSystem } from "./pages/DesignSystem";
-
+import { ChatPage } from "./pages/ChatPage";
 function App() {
   return (
     <>
@@ -19,6 +19,7 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/chat" element={<ChatPage />} />
       </Routes>
     </>
   );
