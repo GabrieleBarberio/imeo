@@ -44,11 +44,11 @@ export const DesignSystem = () => {
                 <span className=" text-white italic">This is Hand</span>
               </div>
             </div>
-            <div className="flex flex-col bg-primary-100 p-5 rounded-2xl">
+            <div className="flex flex-col bg-primary-200 p-5 rounded-2xl">
               <div>
                 <span className="text-white  font-bold text-2xl ">Colors</span>
               </div>
-              <div className="flex flex-wrap">
+              <div className=" grid grid-cols-6 ">
                 <div className="w-20 h-20 text-white bg-blacky-100 ">
                   <span>Blacky 100</span>
                 </div>
@@ -73,7 +73,10 @@ export const DesignSystem = () => {
                 <div className="w-20 h-20 text-white bg-primary-500 ">
                   <span>Primary 500</span>
                 </div>
-                <div className="w-20 h-20 text-white bg-secondary-100 ">
+                <div className="w-20 h-20 text-white bg-primary-600 ">
+                  <span>Primary 600</span>
+                </div>
+                <div className="  border-yellow-300 w-20 h-20 text-white bg-secondary-100 ">
                   <span>Secondary 100</span>
                 </div>
                 <div className="w-20 h-20 text-white bg-secondary-200 ">
@@ -87,7 +90,7 @@ export const DesignSystem = () => {
           </div>
 
           <div className="flex flex-col w-6/12 gap-10">
-            <div className="flex flex-col bg-primary-100 px-5 py-2 rounded-2xl ">
+            <div className="flex flex-col bg-primary-200 px-5 py-2 rounded-2xl ">
               <div>
                 <span className="text-white font-bold text-2xl">Logos</span>
               </div>

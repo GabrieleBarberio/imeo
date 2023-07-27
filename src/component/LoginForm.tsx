@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { SiteBtn } from "./shared/SiteBtn";
+import clsx from "clsx";
 
 export const LoginForm = () => {
   // const handleLogin = () => {};
+
+  const error = false;
   return (
     <>
       <div
@@ -18,14 +21,18 @@ export const LoginForm = () => {
             <input
               type="text"
               placeholder="Username"
-              className="bg-primary-100 rounded-md focus:ring-offset-[0.5px] focus:ring-purple-400"
+              className="input-form"
               name="username"
             />
+            {/* clsx == tool */}
 
             <input
               type="password"
               placeholder="Insert Password"
-              className="bg-primary-100 rounded-md focus:ring-offset-[0.5px] focus:ring-purple-400"
+              className={clsx(
+                "input-form",
+                error && "border-spacing-2 border-red-800"
+              )}
               name="password"
             />
           </div>
