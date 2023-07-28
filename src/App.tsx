@@ -11,7 +11,7 @@ import { ChatPage } from "./pages/ChatPage";
 function App() {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/design" element={<DesignSystem />} />
@@ -19,6 +19,7 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/*" element={<h1>Not Found</h1>} />
         <Route path="/chat" element={<ChatPage />} />
       </Routes>
     </>
