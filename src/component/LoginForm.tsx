@@ -37,7 +37,7 @@ export const LoginForm = () => {
             />
           </div>
 
-          <Button content="Login!" className="site-btn" />
+          <button className="site-xl-btn">Login!</button>
         </form>
         <span className="text-white text-xs">
           Non hai ancora un account?

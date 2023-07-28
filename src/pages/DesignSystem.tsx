@@ -392,6 +392,9 @@ export const DesignSystem = () => {
             <button className="site-btn" onClick={handleClick}>
               Registrati
             </button>
+            <button className="site-xl-btn" onClick={handleClick}>
+              Registrati
+            </button>
             <CoupledBtn
               contentLeft={
                 <i>
