@@ -38,4 +38,7 @@ label {
   .site-btn {
     @apply max-h-[40px]  px-5 py-2 rounded-md  text-white font-bold bg-secondary-100 hover:bg-green-400;
   }
+  .site-xl-btn {
+    @apply max-h-[40px]  px-5 py-2 rounded-md  text-white font-bold bg-secondary-100 hover:bg-green-400 w-8/12;
+  }
 }
