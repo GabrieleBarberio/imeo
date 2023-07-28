@@ -17,7 +17,7 @@ export const CallToAction = () => {
 
           <div className=" w-[50%] text-indigo-50 justify-between text-opacity-80 items-center flex flex-col ">
             <h1 className="font-title text-6xl font-bold  text-purple-500 text-opacity-80">
-              Collabora ovunque
+              Unlock peak team communication
             </h1>
             <span className="block font-paragraph  text-2xl break-words">
               Abbiamo pensato per te e il tuo team uno spazio dedicato a voi.
