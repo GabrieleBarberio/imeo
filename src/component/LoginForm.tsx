@@ -1,11 +1,14 @@
+import { Button } from "flowbite-react";
 import { Link } from "react-router-dom";
-import { SiteBtn } from "./shared/SiteBtn";
-import clsx from "clsx";
 
 export const LoginForm = () => {
   // const handleLogin = () => {};
+  // clsx(
+  //               "input-form",
+  //               error && "border-spacing-2 border-red-800"
+  //             )
 
-  const error = false;
+  // const error = false;
   return (
     <>
       <div
@@ -29,15 +32,12 @@ export const LoginForm = () => {
             <input
               type="password"
               placeholder="Insert Password"
-              className={clsx(
-                "input-form",
-                error && "border-spacing-2 border-red-800"
-              )}
+              className="input-form"
               name="password"
             />
           </div>
 
-          <SiteBtn content="Login!" className=" w-4/6 " />
+          <Button content="Login!" className="site-btn" />
         </form>
         <span className="text-white text-xs">
           Non hai ancora un account?
