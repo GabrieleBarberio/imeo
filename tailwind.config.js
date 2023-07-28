@@ -31,6 +31,11 @@ export default {
         200: "#538F83",
         300: "#4B6F73",
       },
+      landing: {
+        pink: "#121523",
+        green: "#81B15C",
+        blue: "#2DDDE8",
+      },
     },
     extend: {},
   },
