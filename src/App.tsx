@@ -12,7 +12,7 @@ import { SignIn } from "./pages/SignIn";
 function App() {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/design" element={<DesignSystem />} />
