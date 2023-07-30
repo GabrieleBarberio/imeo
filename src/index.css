@@ -43,4 +43,11 @@ label {
   .site-xl-btn {
     @apply max-h-[40px] max-w-xs  px-5 py-2 rounded-md  text-white font-bold bg-secondary-100 hover:bg-green-400 w-8/12;
   }
+  .site-secondary {
+    @apply max-h-[40px] px-9 py-2 rounded-md  text-purple-400 font-bold bg-white hover:bg-purple-400 hover:text-white;
+  }
+  nav span:hover {
+    text-decoration: none;
+    text-shadow: rgba(255, 255, 255, 0.479) 1px 1px 2px;
+  }
 }

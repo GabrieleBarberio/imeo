@@ -16,8 +16,9 @@ export default {
       current: "currentColor",
       white: " #FFFDFA",
       blacky: {
-        100: "#121523",
-        200: "#1d1f26",
+        100: "rgba(0, 0, 0, 0.30)",
+        200: "#121523",
+        300: "#1d1f26",
       },
       primary: {
         100: "#F5ECFF",
