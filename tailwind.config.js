@@ -10,6 +10,7 @@ export default {
       title: ["Archivo", "sans-serif"],
       handwrite: ["Architects Daughter", "cursive"],
       paragraph: ["Gruppo", "sans-serif"],
+      fumetto: ["Bangers", "cursive"],
     },
     extend: {
       spacing: { mww: "1380px" },
