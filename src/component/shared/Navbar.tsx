@@ -1,16 +1,25 @@
 import { Link } from "react-router-dom";
 import logoimeo from "../../assets/logoimeo.png";
+import { useState } from "react"; // Importa il modulo useState per gestire lo stato del menu
 
 export const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Stato per gestire l'apertura/chiusura del menu
+
+  // Funzione per gestire il click sul pulsante dell'hamburger
+  const handleMenuClick = () => {
+    setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
+  };
+
   return (
-    <nav className="w-screen bg-blacky-100 ">
-      <div className=" 2xl:max-w-[1440px] h-[80px] 2xl:flex justify-between 2xl:items-center mx-auto">
-        <div className=" flex justify-center items-center">
+    <nav className="bg-blacky-100">
+      <div className="2xl:max-w-[1440px] mx-auto flex justify-between items-center px-4 md:px-6 lg:px-8 h-[80px]">
+        <div className="flex items-center">
           <Link to="/">
-            <img src={logoimeo} className="w-[120px]" alt="" />
+            <img src={logoimeo} className="w-[120px]" alt="imeo logo" />
           </Link>
         </div>
-        <div className="flex gap-3 text-white text-2xl font-semibold">
+
+        <div className="hidden md:flex gap-3 text-white text-md font-semibold">
           <Link to="design">
             <span>Design System</span>
           </Link>
@@ -21,10 +30,34 @@ export const Navbar = () => {
             <span>About Us</span>
           </Link>
         </div>
-        <div>
-          <button className="site-secondary"> APP </button>
+        {/* Pulsante "APP" per versione desktop */}
+        <div className="hidden md:block">
+          <button className="site-secondary">APP</button>
+        </div>
+        {/* Menu per versione telefono con hamburger */}
+        <div className="md:hidden">
+          <button
+            className="site-secondary"
+            onClick={handleMenuClick} // Aggiungi il gestore per il click sul pulsante dell'hamburger
+          >
+            MENU
+          </button>
         </div>
       </div>
+      {/* Contenuto del menu hamburger */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-black text-white text-md font-semibold py-4 px-8">
+          <Link to="design" onClick={handleMenuClick}>
+            <div className="my-2">Design System</div>
+          </Link>
+          <Link to="*" onClick={handleMenuClick}>
+            <div className="my-2">Imeo Project</div>
+          </Link>
+          <Link to="*" onClick={handleMenuClick}>
+            <div className="my-2">About Us</div>
+          </Link>
+        </div>
+      )}
     </nav>
   );
 };

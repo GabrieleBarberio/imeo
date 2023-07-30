@@ -12,7 +12,7 @@ export default {
       paragraph: ["Gruppo", "sans-serif"],
     },
     extend: {
-      spacing: { 100: "1440px" },
+      spacing: { mww: "1380px" },
       colors: {
         transparent: "transparent",
         current: "currentColor",
