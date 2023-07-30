@@ -38,7 +38,6 @@ export const Navbar = () => {
         <div className=" md:block">
           <button className="site-secondary">APP</button>
         </div>
-        {/* RESPONSIVE MENU */}
       </div>
       {/* HAMBURGER MENU */}
       {isMenuOpen && (
