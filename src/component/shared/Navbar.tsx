@@ -1,18 +1,22 @@
 import { Link } from "react-router-dom";
 import logoimeo from "../../assets/logoimeo.png";
-import { useState } from "react"; // Importa il modulo useState per gestire lo stato del menu
+import { useState } from "react";
 
 export const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Stato per gestire l'apertura/chiusura del menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Funzione per gestire il click sul pulsante dell'hamburger
   const handleMenuClick = () => {
-    setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen);
+    setIsMenuOpen((_isMenuOpen) => !_isMenuOpen);
   };
 
   return (
     <nav className="bg-blacky-100">
       <div className="2xl:max-w-[1440px] mx-auto flex justify-between items-center px-4 md:px-6 lg:px-8 h-[80px]">
+        <div className="md:hidden">
+          <button className="site-secondary" onClick={handleMenuClick}>
+            MENU
+          </button>
+        </div>
         <div className="flex items-center">
           <Link to="/">
             <img src={logoimeo} className="w-[120px]" alt="imeo logo" />
@@ -30,21 +34,13 @@ export const Navbar = () => {
             <span>About Us</span>
           </Link>
         </div>
-        {/* Pulsante "APP" per versione desktop */}
-        <div className="hidden md:block">
+
+        <div className=" md:block">
           <button className="site-secondary">APP</button>
         </div>
-        {/* Menu per versione telefono con hamburger */}
-        <div className="md:hidden">
-          <button
-            className="site-secondary"
-            onClick={handleMenuClick} // Aggiungi il gestore per il click sul pulsante dell'hamburger
-          >
-            MENU
-          </button>
-        </div>
+        {/* RESPONSIVE MENU */}
       </div>
-      {/* Contenuto del menu hamburger */}
+      {/* HAMBURGER MENU */}
       {isMenuOpen && (
         <div className="md:hidden bg-black text-white text-md font-semibold py-4 px-8">
           <Link to="design" onClick={handleMenuClick}>
