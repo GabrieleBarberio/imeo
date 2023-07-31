@@ -1,14 +1,21 @@
-import { useRef } from "react";
+import { ReactEventHandler, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
+interface FormValues {
+  first_name: string;
+  last_name: string;
+  user_name: string;
+  email: string;
+  password: string;
+}
 
 export const SignInForm = () => {
-  const formRef = useRef(null);
+  const formRef = useRef<HTMLFormElement | null>(null);
   const navigate = useNavigate();
 
-  const postUser = async (formValues) => {
+  const postUser = async (formValues: FormValues) => {
     try {
       const response = await fetch("http://localhost:3030/api/users", {
         method: "POST",
@@ -27,19 +34,19 @@ export const SignInForm = () => {
       setTimeout(() => {
         navigate("/login");
       }, 2000);
-    } catch (error) {
-      console.error("Error sending the form data:", error.message);
+    } catch (error: unknown) {
+      console.error("Error sending the form data:", (error as Error).message);
 
-      toast.error(`Errore: ${error.message}`, {
+      toast.error(`Errore: ${(error as Error).message}`, {
         position: toast.POSITION.TOP_CENTER,
       });
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit: ReactEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    const formData = new FormData(formRef.current);
-    const formValues = Object.fromEntries(formData);
+    const formData = new FormData(formRef.current!);
+    const formValues: FormValues = Object.fromEntries(formData);
 
     postUser(formValues);
   };
