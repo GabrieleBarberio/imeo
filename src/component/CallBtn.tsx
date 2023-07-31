@@ -15,8 +15,16 @@ export const CallBtn = (props: CallBtnProps) => {
   return (
     <>
       <Link to={props.link}>
-        <button className="p-4 bg-[#69BAA5FA] font-medium text-lg rounded-xl">
-          {props.text}
+        <button className="flex justify-center items-center w-48 h-12 rounded-lg" type="button">
+          <strong>SPACE</strong>
+          <div className="absolute w-full h-full overflow-hidden rounded-lg">
+            <div id="stars"></div>
+          </div>
+
+          <div id="glow">
+            <div class="circle"></div>
+            <div class="circle"></div>
+          </div>
         </button>
       </Link>
     </>
