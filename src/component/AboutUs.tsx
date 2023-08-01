@@ -5,107 +5,78 @@ function AboutUs () {
         <>
         <section className="mb-[160px] bg-[#FFFDFA]">
             <div className="py-24">
-                <h1 className="text-lg font-bold">ABOUT US</h1>
+                <h1 className="text-center text-3xl font-bold text-[#FFFFFF]">ABOUT US</h1>
             </div>
-            <div className="flex gap-12">
-                <div className="card flex flex-col items-center relative mt-14">
-                    <div className="card__portrait w-[5vw] absolute z-10 bottom-60">
-                        <img className="w-full h-full rounded-full" src={member} alt="Member portrait" />
+            <div className="flex justify-center gap-12 mb-16">
+                <div className="flex flex-col items-center py-8 px-16 rounded-[104px] border-[6px] border-[#4B2B6A] bg-[#1E0E1F94]">
+                    <div className="w-[7vw]">
+                        <img className="max-w-full h-auto rounded-[54px] border-4 border-[#4B2B6A]" src={member} alt="Picture of a member" />
                     </div>
-                    <div className="w-full h-11 absolute rounded-t-lg bg-[#8076A9]"></div>
-                    <div className="py-4 px-4 rounded-lg mt-10 bg-[#D9D9D9] inline-block">
-                        <h2 className="text-lg font-bold my-4 mr-8">Gabriele Barberio</h2>
-                        <p className="min-w-full w-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <div className="card__links">
-                            <div className="card__links__github">
-                                <img />
-                                <a href="#">@GabrieleBarberio</a>
-                            </div>
-                            <div className="card__links__linkedin">
-                                <img />
-                                <a href="#">@GabrieleBarberio</a>
-                            </div>
-                        </div>
+                    <h2 className="text-3xl font-bold my-4 text-[#D9D9D9]">Gabriele Barberio</h2>
+                    <div>{/* role banner */}</div>
+                    <span className="text-xl font-bold my-4 text-[#D9D9D9]">Studente di Develhope appassionato<br/>
+                     di arte, storia, cucina e innovazione.
+                    </span>
+                    <div className="mt-16 mb-4">
+                        <span className="text-2xl font-bold text-[#FFFFFF80]">@GabrieleBarberio</span>
                     </div>
                 </div>
-                <div className="card flex flex-col items-center relative mt-14">
-                    <div className="card__portrait w-[5vw] absolute z-10 bottom-60">
-                        <img className="w-full h-full rounded-full" src={member} alt="Member portrait" />
+
+                <div className="flex flex-col items-center py-8 px-16 rounded-[104px] border-[6px] border-[#4B2B6A] bg-[#1E0E1F94]">
+                    <div className="w-[7vw]">
+                        <img className="max-w-full h-auto rounded-[54px] border-4 border-[#4B2B6A]" src={member} alt="Picture of a member" />
                     </div>
-                    <div className="w-full h-11 absolute rounded-t-lg bg-[#8076A9]"></div>
-                    <div className="py-4 px-4 rounded-lg mt-10 bg-[#D9D9D9] inline-block">
-                        <h2 className="text-lg font-bold my-4 mr-8">Gabriele Barberio</h2>
-                        <p className="min-w-full w-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <div className="card__links">
-                            <div className="card__links__github">
-                                <img />
-                                <a href="#">@GabrieleBarberio</a>
-                            </div>
-                            <div className="card__links__linkedin">
-                                <img />
-                                <a href="#">@GabrieleBarberio</a>
-                            </div>
-                        </div>
+                    <h2 className="text-3xl font-bold my-4 text-[#D9D9D9]">Gabriele Barberio</h2>
+                    <div>{/* role banner */}</div>
+                    <span className="text-xl font-bold my-4 text-[#D9D9D9]">Studente di Develhope appassionato<br/>
+                     di arte, storia, cucina e innovazione.
+                    </span>
+                    <div className="mt-16 mb-4">
+                        <span className="text-2xl font-bold text-[#FFFFFF80]">@GabrieleBarberio</span>
                     </div>
                 </div>
-                <div className="card flex flex-col items-center relative mt-14">
-                    <div className="card__portrait w-[5vw] absolute z-10 bottom-60">
-                        <img className="w-full h-full rounded-full" src={member} alt="Member portrait" />
+
+                <div className="flex flex-col items-center py-8 px-16 rounded-[104px] border-[6px] border-[#4B2B6A] bg-[#1E0E1F94]">
+                    <div className="w-[7vw]">
+                        <img className="max-w-full h-auto rounded-[54px] border-4 border-[#4B2B6A]" src={member} alt="Picture of a member" />
                     </div>
-                    <div className="w-full h-11 absolute rounded-t-lg bg-[#8076A9]"></div>
-                    <div className="py-4 px-4 rounded-lg mt-10 bg-[#D9D9D9] inline-block">
-                        <h2 className="text-lg font-bold my-4 mr-8">Gabriele Barberio</h2>
-                        <p className="min-w-full w-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <div className="card__links">
-                            <div className="card__links__github">
-                                <img />
-                                <a href="#">@GabrieleBarberio</a>
-                            </div>
-                            <div className="card__links__linkedin">
-                                <img />
-                                <a href="#">@GabrieleBarberio</a>
-                            </div>
-                        </div>
+                    <h2 className="text-3xl font-bold my-4 text-[#D9D9D9]">Gabriele Barberio</h2>
+                    <div>{/* role banner */}</div>
+                    <span className="text-xl font-bold my-4 text-[#D9D9D9]">Studente di Develhope appassionato<br/>
+                     di arte, storia, cucina e innovazione.
+                    </span>
+                    <div className="mt-16 mb-4">
+                        <span className="text-2xl font-bold text-[#FFFFFF80]">@GabrieleBarberio</span>
                     </div>
                 </div>
-                <div className="card flex flex-col items-center relative mt-14">
-                    <div className="card__portrait w-[5vw] absolute z-10 bottom-60">
-                        <img className="w-full h-full rounded-full" src={member} alt="Member portrait" />
+            </div>
+
+            <div className="flex justify-center gap-12">
+                <div className="flex flex-col items-center py-8 px-16 rounded-[104px] border-[6px] border-[#4B2B6A] bg-[#1E0E1F94]">
+                    <div className="w-[7vw]">
+                        <img className="max-w-full h-auto rounded-[54px] border-4 border-[#4B2B6A]" src={member} alt="Picture of a member" />
                     </div>
-                    <div className="w-full h-11 absolute rounded-t-lg bg-[#8076A9]"></div>
-                    <div className="py-4 px-4 rounded-lg mt-10 bg-[#D9D9D9] inline-block">
-                        <h2 className="text-lg font-bold my-4 mr-8">Gabriele Barberio</h2>
-                        <p className="min-w-full w-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <div className="card__links">
-                            <div className="card__links__github">
-                                <img />
-                                <a href="#">@GabrieleBarberio</a>
-                            </div>
-                            <div className="card__links__linkedin">
-                                <img />
-                                <a href="#">@GabrieleBarberio</a>
-                            </div>
-                        </div>
+                    <h2 className="text-3xl font-bold my-4 text-[#D9D9D9]">Gabriele Barberio</h2>
+                    <div>{/* role banner */}</div>
+                    <span className="text-xl font-bold my-4 text-[#D9D9D9]">Studente di Develhope appassionato<br/>
+                     di arte, storia, cucina e innovazione.
+                    </span>
+                    <div className="mt-16 mb-4">
+                        <span className="text-2xl font-bold text-[#FFFFFF80]">@GabrieleBarberio</span>
                     </div>
                 </div>
-                <div className="card flex flex-col items-center relative mt-14">
-                    <div className="card__portrait w-[5vw] absolute z-10 bottom-60">
-                        <img className="w-full h-full rounded-full" src={member} alt="Member portrait" />
+
+                <div className="flex flex-col items-center py-8 px-16 rounded-[104px] border-[6px] border-[#4B2B6A] bg-[#1E0E1F94]">
+                    <div className="w-[7vw]">
+                        <img className="max-w-full h-auto rounded-[54px] border-4 border-[#4B2B6A]" src={member} alt="Picture of a member" />
                     </div>
-                    <div className="w-full h-11 absolute rounded-t-lg bg-[#8076A9]"></div>
-                    <div className="py-4 px-4 rounded-lg mt-10 bg-[#D9D9D9] inline-block">
-                        <h2 className="text-lg font-bold my-4 mr-8">Gabriele Barberio</h2>
-                        <p className="min-w-full w-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <div className="card__links">
-                            <div className="card__links__github">
-                                <img />
-                                <a href="#">@GabrieleBarberio</a>
-                            </div>
-                            <div className="card__links__linkedin">
-                                <img />
-                                <a href="#">@GabrieleBarberio</a>
-                            </div>
-                        </div>
+                    <h2 className="text-3xl font-bold my-4 text-[#D9D9D9]">Gabriele Barberio</h2>
+                    <div>{/* role banner */}</div>
+                    <span className="text-xl font-bold my-4 text-[#D9D9D9]">Studente di Develhope appassionato<br/>
+                     di arte, storia, cucina e innovazione.
+                    </span>
+                    <div className="mt-16 mb-4">
+                        <span className="text-2xl font-bold text-[#FFFFFF80]">@GabrieleBarberio</span>
                     </div>
                 </div>
             </div>
