@@ -8,6 +8,7 @@ import { Services } from "./pages/Services";
 import { Contact } from "./pages/Contact";
 import { DesignSystem } from "./pages/DesignSystem";
 import { SignIn } from "./pages/SignIn";
+import { Sidebar } from "./component/Sidebar";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/*" element={<h1>Not Found</h1>} />
+        <Route path ="/chat" element={<Sidebar />} />
       </Routes>
     </>
   );
