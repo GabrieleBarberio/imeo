@@ -1,13 +1,49 @@
-import { Link } from "react-router-dom";
+import { useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 export const SignInForm = () => {
-  // const handleLogin = () => {};
-  // clsx(
-  //               "input-form",
-  //               error && "border-spacing-2 border-red-800"
-  //             )
+  const formRef = useRef(null);
+  const navigate = useNavigate();
 
-  // const error = false;
+  const postUser = async (formValues) => {
+    try {
+      const response = await fetch("http://localhost:3030/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formValues),
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      toast("Registrazione andata a buon fine!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+    } catch (error) {
+      console.error("Error sending the form data:", error.message);
+
+      toast.error(`Errore: ${error.message}`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(formRef.current);
+    const formValues = Object.fromEntries(formData);
+
+    postUser(formValues);
+  };
+
   return (
     <>
       <div
@@ -19,24 +55,35 @@ export const SignInForm = () => {
           <p className="text-white text-md font-handwrite">Unisciti ad IMEO</p>
         </div>
         <form
+          ref={formRef}
           className=" flex flex-col items-center justify-between w-80 gap-5 "
-          // onSubmit={handleLogin}
+          onSubmit={handleSubmit}
         >
           <div className="flex flex-col gap-2">
             <input
               type="text"
-              placeholder="Username"
+              placeholder="Enter first name"
               className="input-form"
-              name="username"
+              name="first_name"
             />
             <input
               type="text"
+              placeholder="Enter last name"
+              className="input-form"
+              name="last_name"
+            />
+            <input
+              type="text"
+              placeholder="Enter a username"
+              className="input-form"
+              name="user_name"
+            />
+            <input
+              type="email"
               placeholder="expamle@gmail.com"
               className="input-form"
-              name="username"
+              name="email"
             />
-            {/* clsx == tool */}
-
             <input
               type="password"
               placeholder="Insert Password"
@@ -45,7 +92,9 @@ export const SignInForm = () => {
             />
           </div>
 
-          <button className="site-xl-btn"> Sign In! </button>
+          <button type="submit" className="site-xl-btn">
+            Sign In!
+          </button>
         </form>
         <span className="text-white text-xs">
           Hai già un account?
@@ -54,6 +103,7 @@ export const SignInForm = () => {
           </Link>
         </span>
       </div>
+      <ToastContainer /> {/* Add this component to show toast messages */}
     </>
   );
 };
