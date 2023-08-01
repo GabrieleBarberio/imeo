@@ -15,7 +15,7 @@ export const SignInForm = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
   const navigate = useNavigate();
 
-  const postUser = async (formValues: FormValues) => {
+  const signUser = async (formValues: FormValues) => {
     try {
       const response = await fetch("http://localhost:3030/api/users", {
         method: "POST",
@@ -48,7 +48,7 @@ export const SignInForm = () => {
     const formData = new FormData(formRef.current!);
     const formValues: FormValues = Object.fromEntries(formData);
 
-    postUser(formValues);
+    signUser(formValues);
   };
 
   return (
