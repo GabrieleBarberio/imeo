@@ -1,4 +1,5 @@
 import logoimeo from "../assets/logoimeo.png" 
+import GabrieleBarberio from "../assets/GabrieleBaberio.png"
 
 export const Sidebar = () => {
   return (
@@ -17,7 +18,7 @@ export const Sidebar = () => {
           <div className="flex flex-row justify-between items-center mb-4">
             <p className="font-bold text-white ml-4"> Friends </p>
 
-            <div className="flex flex-row gap-4 boder border-1 rounded-xl p-1.5 bg-secondary-400">
+            <div className="flex flex-row gap-4 boder border-1 rounded-xl p-2 bg-secondary-400 mr-4">
               <svg
                 width="28"
                 height="25"
@@ -75,32 +76,32 @@ export const Sidebar = () => {
           </div>
 
           <div className=" flex flex-col gap-3.5 border-b-1 justify-center items-center mb-4">
-            <div className="flex border  rounded-md p-3 gap-3 bg-secondary-400 w-11/12">
-              <img src="" alt="profilepic" />
+            <div className="flex border  items-center rounded-xl p-3 gap-3 bg-secondary-400 w-11/12">
+              <img src={GabrieleBarberio} alt="profilepic" className="w-[60px]"/>
               <div>
                 <h3 className="text-white"> Gabriele Barberio </h3>
                 <p className="text-secondary-100"> online now </p>
               </div>
             </div>
 
-            <div className="flex border  rounded-md p-3 gap-3  bg-secondary-400 w-11/12">
-              <img src="" alt="profilepic" />
+            <div className="flex border items-center rounded-xl p-3 gap-3  bg-secondary-400 w-11/12">
+              <img src={GabrieleBarberio} alt="profilepic"className="w-[60px]" />
               <div>
                 <h3 className="text-white"> Gabriele Barberio </h3>
                 <p className="text-secondary-100"> Il mio stato </p>
               </div>
             </div>
 
-            <div className="flex border  rounded-md p-3 gap-3   bg-secondary-400 w-11/12">
-              <img src="" alt="profilepic" />
+            <div className="flex border items-center rounded-xl p-3 gap-3   bg-secondary-400 w-11/12">
+              <img src={GabrieleBarberio} alt="profilepic" className="w-[60px]"/>
               <div>
                 <h3 className="text-white"> Gabriele Barberio </h3>
                 <p className="text-secondary-100"> Il mio stato </p>
               </div>
             </div>
 
-            <div className="flex border  rounded-md p-3 gap-3   bg-secondary-400 w-11/12">
-              <img src="" alt="profilepic" />
+            <div className="flex border items-center rounded-xl p-3 gap-3   bg-secondary-400 w-11/12">
+              <img src={GabrieleBarberio} alt="profilepic" className="w-[60px]"/>
               <div>
                 <h3 className="text-white"> Gabriele Barberio </h3>
                 <p className="text-secondary-100"> Il mio stato </p>
@@ -113,8 +114,8 @@ export const Sidebar = () => {
           <p className="font-bold text-white ml-4 mb-2"> My Account  </p>
           <div className="flex flex-col items-center">
           
-            <div className="flex border  rounded-md p-3 gap-3  bg-secondary-400 w-11/12 ">
-              <img src="" alt="profilepic" />
+            <div className="flex border items-center rounded-xl p-3 gap-3  bg-secondary-400 w-11/12 ">
+              <img src={GabrieleBarberio} alt="profilepic" className="w-[60px]"/>
               <div>
                 <h3 className="text-white"> Gabriele Barberio </h3>
                 <p className="text-secondary-100"> Il mio stato </p>
