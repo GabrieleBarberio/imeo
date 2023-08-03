@@ -1,6 +1,6 @@
-import Footer from "../component/Footer";
-import AboutUs from "../component/AboutUs";
-import { CallToAction } from "../component/CallToAction";
+import Footer from "../component/landing/Footer";
+import AboutUs from "../component/landing/AboutUs";
+import { CallToAction } from "../component/landing/CallToAction";
 
 export const Home = () => {
   return (

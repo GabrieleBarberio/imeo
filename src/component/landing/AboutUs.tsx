@@ -1,4 +1,4 @@
-import member from "../assets/member.png";
+import member from "../../assets/member.png";
 
 function AboutUs() {
   return (

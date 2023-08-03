@@ -1,4 +1,4 @@
-import logoimeo from "../assets/logoimeo.png"
+import logoimeo from "../../assets/logoimeo.png"
 
 function Footer () {
     return (
