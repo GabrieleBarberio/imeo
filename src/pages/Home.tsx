@@ -1,10 +1,12 @@
+import AboutUs from "../component/AboutUs";
 import { CallToAction } from "../component/CallToAction";
-
+import bg from "../assets/bg.png";
 export const Home = () => {
   return (
     <>
-      <div className="w-[100vw] h-[500vh]  bg-[#000814]">
+      <div className=" bg-blacky-100">
         <CallToAction />
+        <AboutUs />
       </div>
     </>
   );
