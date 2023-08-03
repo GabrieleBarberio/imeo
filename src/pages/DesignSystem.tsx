@@ -4,6 +4,7 @@ import logoType from "../assets/logoimeo.png";
 
 import mascotte from "../assets/mascottelogo.png";
 import { CoupledBtn } from "../component/shared/CoupledBtn";
+import { Sidebar } from "../component/Sidebar";
 export const DesignSystem = () => {
   const handleClick = () => {
     console.log("Clicked!");
@@ -460,6 +461,10 @@ export const DesignSystem = () => {
               }
               handleClick={handleClick}
             />
+          </div>
+          <div>
+            {" "}
+            <Sidebar />
           </div>
         </div>
       </div>

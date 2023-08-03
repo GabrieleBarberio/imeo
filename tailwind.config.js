@@ -21,6 +21,7 @@ export default {
         blacky: {
           100: "#121523",
           200: "#1d1f26",
+          300: "#060D28",
         },
         primary: {
           100: "#F5ECFF",
@@ -34,6 +35,7 @@ export default {
           100: "#68B7A3",
           200: "#538F83",
           300: "#4B6F73",
+          400: "#292b4d",
         },
         landing: {
           pink: "#FDBFFE",
