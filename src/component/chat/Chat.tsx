@@ -1,7 +1,9 @@
 //WIP
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Chat: React.FC = () => {
+  const user = useSelector((state) => state.auth.user_name);
   return (
     <div className="flex flex-col h-screen">
       <div className="flex-1 bg-gray-200">
@@ -22,7 +24,7 @@ const Chat: React.FC = () => {
                 className="text-primary-100 font-title font-bold text-3xl"
                 style={{ color: "#5B5682" }}
               >
-                Utente 007
+                {user}
               </span>
               <span
                 className="text-secondary-100 font-title font-bold text-xl"
