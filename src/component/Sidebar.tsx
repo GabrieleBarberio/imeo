@@ -1,7 +1,26 @@
 import logoimeo from "../assets/logoimeo.png" 
 import GabrieleBarberio from "../assets/GabrieleBaberio.png"
+import { useEffect, useState } from "react";
 
 export const Sidebar = () => {
+  const [user, setUser] = useState([])
+
+
+  useEffect(() => {
+    const fetchUser = async() => {
+      try {
+        const responseAPI = await fetch("https://jsonplaceholder.typicode.com/photos")
+        const res = await responseAPI.json()
+        setUser(res)
+      } catch (error) {
+        console.error(error);
+        
+      }
+    }
+    fetchUser()
+  }, [])
+
+
   return (
     <>
       
@@ -75,40 +94,19 @@ export const Sidebar = () => {
             </div>
           </div>
 
-          <div className=" flex flex-col gap-3.5 border-b-1 justify-center items-center mb-4">
-            <div className="flex border  items-center rounded-xl p-3 gap-3 bg-secondary-400 w-11/12">
-              <img src={GabrieleBarberio} alt="profilepic" className="w-[60px]"/>
+
+          {user 
+              && user.map((user:any, i:any ) => { return (
+            <div key= {i}  className=" flex flex-col gap-3.5 border-b-1 justify-center items-center mb-4">
+              <div className="flex border  items-center rounded-xl p-3 gap-3 bg-secondary-400 w-11/12">
+              <img src={user.url} alt="" className="w-[60px]"/>
               <div>
-                <h3 className="text-white"> Gabriele Barberio </h3>
-                <p className="text-secondary-100"> online now </p>
+                <h3 className="text-white"> {user.title} </h3>
+                <p> {user.id}</p>
+              </div>
               </div>
             </div>
-
-            <div className="flex border items-center rounded-xl p-3 gap-3  bg-secondary-400 w-11/12">
-              <img src={GabrieleBarberio} alt="profilepic"className="w-[60px]" />
-              <div>
-                <h3 className="text-white"> Gabriele Barberio </h3>
-                <p className="text-secondary-100"> Il mio stato </p>
-              </div>
-            </div>
-
-            <div className="flex border items-center rounded-xl p-3 gap-3   bg-secondary-400 w-11/12">
-              <img src={GabrieleBarberio} alt="profilepic" className="w-[60px]"/>
-              <div>
-                <h3 className="text-white"> Gabriele Barberio </h3>
-                <p className="text-secondary-100"> Il mio stato </p>
-              </div>
-            </div>
-
-            <div className="flex border items-center rounded-xl p-3 gap-3   bg-secondary-400 w-11/12">
-              <img src={GabrieleBarberio} alt="profilepic" className="w-[60px]"/>
-              <div>
-                <h3 className="text-white"> Gabriele Barberio </h3>
-                <p className="text-secondary-100"> Il mio stato </p>
-              </div>
-            </div>
-          </div>
-
+          )})}
 
 
           <p className="font-bold text-white ml-4 mb-2"> My Account  </p>
