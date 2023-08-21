@@ -11,7 +11,7 @@ export const Sidebar = () => {
   useEffect(() => {
     const fetchUser = async() => {
       try {
-        const responseAPI = await fetch("https://jsonplaceholder.typicode.com/photos")
+        const responseAPI = await fetch("http://localhost:3030/api/users")
         const res = await responseAPI.json()
         setUser(res)
       } catch (error) {
@@ -110,7 +110,7 @@ export const Sidebar = () => {
               <div className="flex border  items-center rounded-xl p-3 gap-3 bg-secondary-400 w-11/12">
               <img src={user.url} alt="" className="w-[60px]"/>
               <div>
-                <h3 className="text-white"> {user.title} </h3>
+                <h3 className="text-white"> {user.user_name} </h3>
                 <p> {user.id}</p>
               </div>
               </div>
