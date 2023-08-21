@@ -102,6 +102,8 @@ export const Sidebar = () => {
               }
             /> 
          </div>
+
+         
           {user 
               && user.map((user:any, i:any ) => { return (
             <div key= {i}  className=" flex flex-col gap-3.5 border-b-1 justify-center items-center mb-4">
