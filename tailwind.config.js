@@ -10,6 +10,7 @@ export default {
       title: ["Archivo", "sans-serif"],
       handwrite: ["Architects Daughter", "cursive"],
       paragraph: ["Gruppo", "sans-serif"],
+      fumetto: ["Bangers", "cursive"],
     },
     extend: {
       spacing: { mww: "1380px" },
@@ -20,7 +21,7 @@ export default {
         blacky: {
           100: "#121523",
           200: "#1d1f26",
-          300: "#060D28", 
+          300: "#060D28",
         },
         primary: {
           100: "#F5ECFF",
@@ -35,6 +36,11 @@ export default {
           200: "#538F83",
           300: "#4B6F73",
           400: "#292b4d",
+        },
+        landing: {
+          pink: "#FDBFFE",
+          green: "#81B15C",
+          blue: "#2DDDE8",
         },
       },
     },
