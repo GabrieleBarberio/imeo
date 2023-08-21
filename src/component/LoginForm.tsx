@@ -1,26 +1,26 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { login } from "../store/authSlice";
-
-// const handleLogin = () => {};
-// clsx(
-//               "input-form",
-//               error && "border-spacing-2 border-red-800"
-//             )
-
-// const error = false;
-
-export const LoginForm = () => {
+import { useNavigate, Link } from "react-router-dom";
+import { login } from "../store/authSlice"; // Import the appropriate path for your auth slice
+import { ToastContainer, toast } from "react-toastify";
+interface LoginFormState {
+  user_name: string;
+  password: string;
+}
+interface LoginRes {
+  user_name: string;
+  token: string;
+}
+export const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<LoginFormState>({
     user_name: "",
     password: "",
   });
 
   const navigate = useNavigate();
 
-  const send = async () => {
+  const send = async (): Promise<void> => {
     try {
       const res = await fetch("http://localhost:3030/api/users/login", {
         method: "POST",
@@ -31,16 +31,25 @@ export const LoginForm = () => {
       });
 
       if (res.ok) {
-        const result = await res.json(); // Assuming the response contains data to dispatch
+        const result: LoginRes = await res.json(); // Assuming the response contains data to dispatch
         dispatch(login(result));
-        navigate("/");
+
+        toast("Registrazione andata a buon fine!", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        setTimeout(() => {
+          console.log("ciao");
+
+          navigate("/chat");
+        }, 1000);
       }
     } catch (e) {
+      console.log(e);
       throw e;
     }
   };
 
-  const handleInput = (event) => {
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     console.log(name, value);
     setForm((_form) => ({
@@ -49,7 +58,7 @@ export const LoginForm = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     send();
   };
@@ -89,6 +98,7 @@ export const LoginForm = () => {
           Registrati
         </Link>
       </span>
+      <ToastContainer />
     </div>
   );
 };

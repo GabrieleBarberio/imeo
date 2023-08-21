@@ -1,34 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { save, get, remove } from "../utility/internalMemory";
-const authSlice = () => {
-  const token = get("token") || null;
-  const user_name = get("user_name") || null;
 
-  return createSlice({
-    name: "auth",
-    initialState: {
-      token,
-      user_name,
-    },
-    reducers: {
-      login: (state, action) => {
-        state.token = action.payload.token;
-        state.user = action.payload.user;
-        save("token", state.token);
-        save("user_name", state.user_name);
-      },
+interface AuthState {
+  token: string | null;
+  user_name: string | null;
+}
 
-      logout: (state) => {
-        state.token = null;
-        state.user_name = null;
-
-        remove("token");
-        remove("user_name");
-      },
-    },
-  });
+const initialState: AuthState = {
+  token: String(get("token")) || null,
+  user_name: String(get("user_name")) || null,
 };
 
-export const { login, logout } = authSlice().actions;
+const authSlice = createSlice({
+  name: "auth",
+  initialState,
+  reducers: {
+    login: (state, action: PayloadAction<{ token: string; user_name: string }>) => {
+      state.token = action.payload.token;
+      state.user_name = action.payload.user_name;
+      save("token", state.token);
+      save("user_name", state.user_name);
+    },
 
-export default authSlice().reducer;
+    logout: (state) => {
+      state.token = null;
+      state.user_name = null;
+
+      remove("token");
+      remove("user_name");
+    },
+  },
+});
+
+export const { login, logout } = authSlice.actions;
+
+export default authSlice.reducer;
