@@ -1,0 +1,37 @@
+[
+    {
+       "first_name" : "Gabriele",
+       "last_name" : "Barberio",
+       "user_name" : "grinker"
+    },
+    {
+        "first_name" : "Luca",
+        "last_name" : "Loggia",
+        "user_name" : "Loggia"
+     },
+     {
+        "first_name" : "Gianmarco",
+        "last_name" : "Pesola",
+        "user_name" : "Gian93"
+     },
+     {
+        "first_name" : "Davide",
+        "last_name" : "Simone",
+        "user_name" : "whoisdave"
+     },
+     {
+        "first_name" : "Andrea",
+        "last_name" : "Izzo",
+        "user_name" : "andreaIzzo"
+     },
+     {
+        "first_name" : "Simone",
+        "last_name" : "Strati",
+        "user_name" : "SimoneStrati"
+     },
+     {
+        "first_name" : "Antonino",
+        "last_name" : "Alampi",
+        "user_name" : "Tony"
+     }
+]

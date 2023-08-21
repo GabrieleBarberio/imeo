@@ -38,7 +38,7 @@ export const Sidebar = () => {
         <div>
          <div className="flex flex-row items-centers justify-between mr-4 mb-4 text-center"> 
            <p className="font-bold text-white ml-4 mb-2"> Friends  </p>
-           <CoupledBtn 
+           <CoupledBtn   
               contentLeft={
                 <i>
                   <svg
