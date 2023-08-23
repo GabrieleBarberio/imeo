@@ -11,7 +11,7 @@ export const Header = () => {
             <p className="text-secondary-100"> Il mio stato </p>
           </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 mr-2">
           <button className="rounded-btn">
             <i className=" mx-auto my-auto">
               <svg
