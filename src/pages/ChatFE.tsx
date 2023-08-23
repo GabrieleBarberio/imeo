@@ -10,8 +10,13 @@ export const ChatFE = () => {
             <div className="w-3/4">
                 <Header />
                 <div className="bg-blacky-300">
-                    
-                                        
+
+                <div className="flex flex-end justify-center items-end relative">
+                    <input className="w-4/5 border-none p-3 rounded-lg bg-secondary-400 absolute  bottom-[-400px]"
+                           type="text" 
+                           placeholder="Scrivi un messaggio"
+                           />     
+                </div>                                        
 
                 </div>
             </div>            

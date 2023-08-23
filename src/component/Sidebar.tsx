@@ -2,36 +2,52 @@ import logoimeo from "../assets/logoimeo.png";
 import GabrieleBarberio from "../assets/GabrieleBaberio.png";
 import { useEffect, useState } from "react";
 import { CoupledBtn } from "./shared/CoupledBtn";
+import { useSelector } from "react-redux";
+import { SidebarButton } from "./SidebarButton";
 
 export const Sidebar = () => {
-  const [user, setUser] = useState([]);
+  const [users, setUsers] = useState([]);
+  const token = useSelector(s => s.auth.token)
+
+  const fetchUsers = async() => {
+    try {
+      const response = await fetch("http://localhost:3030/api/users", {
+        method : "GET",
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+       })
+       if(!response.ok) {
+        throw new Error("fail fetch user")
+       } 
+       const users = await response.json()    
+       console.log(users);
+       setUsers(users)
+    } catch (error) {
+      console.log(error);
+      throw error
+    }
+  }
+
 
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const responseAPI = await fetch("http://localhost:3030/api/users");
-        const res = await responseAPI.json();
-        setUser(res);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchUser();
+    fetchUsers()
   }, []);
 
   return (
     <>
-      <div className="bg-blacky-300 w-1/4 h-screen ">
-        {/* LOGO */}
-        <div className="flex justify-center">
-          <img src={logoimeo} className="w-[100px]" alt="logo" />
-        </div>
-
-        {/* main */}
-
+      <div className="bg-blacky-300 w-1/4 flex-col h-screen">
+        {/* DIV CHE WRAPPA ASIDE */}
         <div>
+          <div className="flex justify-center">
+            <img src={logoimeo} alt="logoimeo" className="w-[100px]" />
+          </div>
+
           <div className="flex flex-row items-centers justify-between mr-4 mb-4 text-center">
-            <p className="font-bold text-white ml-4 mb-2 text-center"> Friends </p>
+            <p className="font-bold text-white ml-4 mb-2 text-center">
+              {" "}
+              Friends{" "}
+            </p>
             <CoupledBtn
               contentLeft={
                 <i>
@@ -95,81 +111,55 @@ export const Sidebar = () => {
                 </i>
               }
             />
+            
           </div>
 
-          {user &&
-            user.map((user: any, i: any) => {
-              return (
-                <div
-                  key={i}
-                  className=" flex flex-col gap-3.5 border-b-1 justify-center items-center mb-4"
-                >
-                  <div className="flex border  items-center rounded-xl p-3 gap-3 bg-secondary-400 w-11/12">
-                    <img src={user.url} alt="" className="w-[60px]" />
-                    <div>
-                      <h3 className="text-white"> {user.user_name} </h3>
-                      <p> {user.id}</p>
-                    </div>
+
+          <div> {/* DIV CHE WRAPPA TUTTI GLI UTENTI  */}
+
+                {/* PRIMI TRE BOTTONI DEGLI AMICI/UTENTI */}
+                <div className="overflow-auto flex flex-col justify-between items-center ">
+                
+                {users && users.map((user)=>{ return (
+                  
+                  <SidebarButton user_name={user.user_name}
+                                 img={GabrieleBarberio}
+                                
+                  />
+                )}
+                
+                )}
+          
+                </div>
+
+                {/* MY ACCOUNT */}
+                <div className="flex-col justify-center">
+                  <p className="font-bold text-white ml-4 mb-2"> My Account </p> 
+                  <div className="flex items-center justify-center">
+                      <SidebarButton user_name="Davide Simone"
+                                 img={GabrieleBarberio} 
+                  
+                      />
                   </div>
                 </div>
-              );
-            })}
+          </div>      
+      </div>
 
-          <div className="flex flex-col items-center">
-            <div className="flex border items-center rounded-xl p-3 gap-3  bg-secondary-400 w-11/12 ">
-              <img
-                src={GabrieleBarberio}
-                alt="profilepic"
-                className="w-[60px]"
-              />
-              <div>
-                <h3 className="text-white"> Gabriele Barberio </h3>
-                <p className="text-secondary-100"> Il mio stato </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex border items-center rounded-xl p-3 gap-3  bg-secondary-400 w-11/12 ">
-              <img
-                src={GabrieleBarberio}
-                alt="profilepic"
-                className="w-[60px]"
-              />
-              <div>
-                <h3 className="text-white"> Gabriele Barberio </h3>
-                <p className="text-secondary-100"> Il mio stato </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex border items-center rounded-xl p-3 gap-3  bg-secondary-400 w-11/12 ">
-              <img
-                src={GabrieleBarberio}
-                alt="profilepic"
-                className="w-[60px]"
-              />
-              <div>
-                <h3 className="text-white"> Gabriele Barberio </h3>
-                <p className="text-secondary-100"> Il mio stato </p>
-              </div>
-            </div>
-          </div>
+      <div>
+        
+        
+      
+      </div>          
 
-          <p className="font-bold text-white ml-4 mb-2"> My Account </p>
-          <div className="flex flex-col items-center">
-            <div className="flex border items-center rounded-xl p-3 gap-3  bg-secondary-400 w-11/12 ">
-              <img
-                src={GabrieleBarberio}
-                alt="profilepic"
-                className="w-[60px]"
-              />
-              <div>
-                <h3 className="text-white"> Gabriele Barberio </h3>
-                <p className="text-secondary-100"> Il mio stato </p>
-              </div>
-            </div>
-          </div>
-        </div>
+
+
+
+
+
+
+
+
+
       </div>
     </>
   );
