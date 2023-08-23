@@ -5,9 +5,16 @@ export const ChatFE = () => {
     return(
         <>
         
-        <div className="flex w-4/4">
+        <div className="flex w-4/4 bg-blacky-300">
             <Sidebar />
-            <Header />
+            <div className="w-3/4">
+                <Header />
+                <div className="bg-blacky-300">
+                    
+                                        
+
+                </div>
+            </div>            
         </div>
         </>
     )

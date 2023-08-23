@@ -2,9 +2,9 @@ import GabrieleBarberio from "../assets/GabrieleBaberio.png";
 
 export const Header = () => {
   return (
-    <div className="bg-blacky-300 w-3/4 h-1/4">
-      <div className="flex justify-between m-2 items-center">
-        <div className="flex ml-2 items-center gap-3">
+    <div className="bg-blacky-300 w-4/4 ">
+      <div className="flex justify-between  items-center">
+        <div className="flex ml-2 items-center gap-3 m-2">
           <img src={GabrieleBarberio} alt="" />
           <div>
             <h1 className="text-white text-lg "> Davide Simone</h1>

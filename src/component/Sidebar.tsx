@@ -1,32 +1,27 @@
-import logoimeo from "../assets/logoimeo.png" 
-import GabrieleBarberio from "../assets/GabrieleBaberio.png"
+import logoimeo from "../assets/logoimeo.png";
+import GabrieleBarberio from "../assets/GabrieleBaberio.png";
 import { useEffect, useState } from "react";
 import { CoupledBtn } from "./shared/CoupledBtn";
 
-
 export const Sidebar = () => {
-  const [user, setUser] = useState([])
-
+  const [user, setUser] = useState([]);
 
   useEffect(() => {
-    const fetchUser = async() => {
+    const fetchUser = async () => {
       try {
-        const responseAPI = await fetch("http://localhost:3030/api/users")
-        const res = await responseAPI.json()
-        setUser(res)
+        const responseAPI = await fetch("http://localhost:3030/api/users");
+        const res = await responseAPI.json();
+        setUser(res);
       } catch (error) {
-        console.error(error);     
+        console.error(error);
       }
-    }
-    fetchUser()
-  }, [])
-
+    };
+    fetchUser();
+  }, []);
 
   return (
     <>
-      
-
-      <div className="bg-blacky-300 w-1/4">
+      <div className="bg-blacky-300 w-1/4 h-screen ">
         {/* LOGO */}
         <div className="flex justify-center">
           <img src={logoimeo} className="w-[120px]" alt="logo" />
@@ -35,9 +30,9 @@ export const Sidebar = () => {
         {/* main */}
 
         <div>
-         <div className="flex flex-row items-centers justify-between mr-4 mb-4 text-center"> 
-           <p className="font-bold text-white ml-4 mb-2"> Friends  </p>
-           <CoupledBtn   
+          <div className="flex flex-row items-centers justify-between mr-4 mb-4 text-center">
+            <p className="font-bold text-white ml-4 mb-2 text-center"> Friends </p>
+            <CoupledBtn
               contentLeft={
                 <i>
                   <svg
@@ -99,29 +94,75 @@ export const Sidebar = () => {
                   </svg>
                 </i>
               }
-            /> 
-         </div>
+            />
+          </div>
 
-         
-          {user 
-              && user.map((user:any, i:any ) => { return (
-            <div key= {i}  className=" flex flex-col gap-3.5 border-b-1 justify-center items-center mb-4">
-              <div className="flex border  items-center rounded-xl p-3 gap-3 bg-secondary-400 w-11/12">
-              <img src={user.url} alt="" className="w-[60px]"/>
+          {user &&
+            user.map((user: any, i: any) => {
+              return (
+                <div
+                  key={i}
+                  className=" flex flex-col gap-3.5 border-b-1 justify-center items-center mb-4"
+                >
+                  <div className="flex border  items-center rounded-xl p-3 gap-3 bg-secondary-400 w-11/12">
+                    <img src={user.url} alt="" className="w-[60px]" />
+                    <div>
+                      <h3 className="text-white"> {user.user_name} </h3>
+                      <p> {user.id}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+
+          <div className="flex flex-col items-center">
+            <div className="flex border items-center rounded-xl p-3 gap-3  bg-secondary-400 w-11/12 ">
+              <img
+                src={GabrieleBarberio}
+                alt="profilepic"
+                className="w-[60px]"
+              />
               <div>
-                <h3 className="text-white"> {user.user_name} </h3>
-                <p> {user.id}</p>
-              </div>
+                <h3 className="text-white"> Gabriele Barberio </h3>
+                <p className="text-secondary-100"> Il mio stato </p>
               </div>
             </div>
-          )})}
-
-
-          <p className="font-bold text-white ml-4 mb-2"> My Account  </p>
+          </div>
           <div className="flex flex-col items-center">
-          
             <div className="flex border items-center rounded-xl p-3 gap-3  bg-secondary-400 w-11/12 ">
-              <img src={GabrieleBarberio} alt="profilepic" className="w-[60px]"/>
+              <img
+                src={GabrieleBarberio}
+                alt="profilepic"
+                className="w-[60px]"
+              />
+              <div>
+                <h3 className="text-white"> Gabriele Barberio </h3>
+                <p className="text-secondary-100"> Il mio stato </p>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="flex border items-center rounded-xl p-3 gap-3  bg-secondary-400 w-11/12 ">
+              <img
+                src={GabrieleBarberio}
+                alt="profilepic"
+                className="w-[60px]"
+              />
+              <div>
+                <h3 className="text-white"> Gabriele Barberio </h3>
+                <p className="text-secondary-100"> Il mio stato </p>
+              </div>
+            </div>
+          </div>
+
+          <p className="font-bold text-white ml-4 mb-2"> My Account </p>
+          <div className="flex flex-col items-center">
+            <div className="flex border items-center rounded-xl p-3 gap-3  bg-secondary-400 w-11/12 ">
+              <img
+                src={GabrieleBarberio}
+                alt="profilepic"
+                className="w-[60px]"
+              />
               <div>
                 <h3 className="text-white"> Gabriele Barberio </h3>
                 <p className="text-secondary-100"> Il mio stato </p>
