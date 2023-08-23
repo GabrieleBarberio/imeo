@@ -10,7 +10,7 @@ interface MessageListProps {
   messages: Message[];
 }
 
-export const Body: React.FC<MessageListProps> = ({ messages }) => {
+export const BodyChat: React.FC<MessageListProps> = ({ messages }) => {
   return (
     <div
       style={{

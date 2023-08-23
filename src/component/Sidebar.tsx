@@ -7,32 +7,31 @@ import { SidebarButton } from "./SidebarButton";
 
 export const Sidebar = () => {
   const [users, setUsers] = useState([]);
-  const token = useSelector(s => s.auth.token)
-  const author = useSelector(s => s.auth.user_name)
+  const token = useSelector((s) => s.auth.token);
+  const author = useSelector((s) => s.auth.user_name);
 
-  const fetchUsers = async() => {
+  const fetchUsers = async () => {
     try {
       const response = await fetch("http://localhost:3030/api/users", {
-        method : "GET",
+        method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
-       })
-       if(!response.ok) {
-        throw new Error("fail fetch user")
-       } 
-       const users = await response.json()    
-       console.log(users);
-       setUsers(users)
+      });
+      if (!response.ok) {
+        throw new Error("fail fetch user");
+      }
+      const users = await response.json();
+      console.log(users);
+      setUsers(users);
     } catch (error) {
       console.log(error);
-      throw error
+      throw error;
     }
-  }
-
+  };
 
   useEffect(() => {
-    fetchUsers()
+    fetchUsers();
   }, []);
 
   return (
@@ -112,54 +111,38 @@ export const Sidebar = () => {
                 </i>
               }
             />
-            
           </div>
 
-
-          <div> {/* DIV CHE WRAPPA TUTTI GLI UTENTI  */}
-
-                {/* PRIMI TRE BOTTONI DEGLI AMICI/UTENTI */}
-                <div className="overflow-y-scroll h-[50vh] flex flex-col justify-between items-center grow mb-5 ">
-                {users && users.map((user)=>{ 
+          <div>
+            {" "}
+            {/* DIV CHE WRAPPA TUTTI GLI UTENTI  */}
+            {/* PRIMI TRE BOTTONI DEGLI AMICI/UTENTI */}
+            <div className="overflow-y-scroll h-[50vh] flex flex-col justify-between items-center grow mb-5 ">
+              {users &&
+                users.map((user, i) => {
                   console.log(user);
-                  
+
                   return (
-                  <SidebarButton user_name={user.user_name.trim()}
-                                 img={GabrieleBarberio}            
-                  />
-                )}
-                )}
-          
-                </div>
-
-                {/* MY ACCOUNT */}
-                <div className="flex-col justify-center">
-                  <p className="font-bold text-white ml-4 mb-2"> My Account </p> 
-                  <div className="flex items-center justify-center">
-                      <SidebarButton user_name={author}
-                                 img={GabrieleBarberio} 
-                  
+                    <div key={i}>
+                      <SidebarButton
+                        user_name={user.user_name.trim()}
+                        img={GabrieleBarberio}
                       />
-                  </div>
-                </div>
-          </div>      
-      </div>
+                    </div>
+                  );
+                })}
+            </div>
+            {/* MY ACCOUNT */}
+            <div className="flex-col justify-center">
+              <p className="font-bold text-white ml-4 mb-2"> My Account </p>
+              <div className="flex items-center justify-center">
+                <SidebarButton user_name={author} img={GabrieleBarberio} />
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div>
-        
-        
-      
-      </div>          
-
-
-
-
-
-
-
-
-
-
+        <div></div>
       </div>
     </>
   );
