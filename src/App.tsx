@@ -10,12 +10,13 @@ import { DesignSystem } from "./pages/DesignSystem";
 import { SignIn } from "./pages/SignIn";
 import { Sidebar } from "./component/Sidebar";
 
-import { ChatPage } from "./pages/ChatPage";
+// import { ChatPage } from "./pages/ChatPage";
 import { Chat } from "./component/Chat";
+import { ChatFE } from "./pages/ChatFE";
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/design" element={<DesignSystem />} />
@@ -25,6 +26,8 @@ function App() {
         <Route path="/*" element={<NotFound />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/chat" element={<Chat />} />
+        <Route path="/sidebar" element={<Sidebar />}/>
+        <Route path="/chatlayout" element={<ChatFE />} />
       </Routes>
     </>
   );

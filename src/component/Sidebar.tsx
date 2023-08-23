@@ -15,8 +15,7 @@ export const Sidebar = () => {
         const res = await responseAPI.json()
         setUser(res)
       } catch (error) {
-        console.error(error);
-        
+        console.error(error);     
       }
     }
     fetchUser()
@@ -27,7 +26,7 @@ export const Sidebar = () => {
     <>
       
 
-      <div className="bg-blacky-300 max-w-sm">
+      <div className="bg-blacky-300 w-1/4">
         {/* LOGO */}
         <div className="flex justify-center">
           <img src={logoimeo} className="w-[120px]" alt="logo" />
