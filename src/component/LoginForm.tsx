@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { login } from "../store/authSlice"; // Import the appropriate path for your auth slice
+import { login } from "../store/authSlice";
 import { ToastContainer, toast } from "react-toastify";
 interface LoginFormState {
   user_name: string;
@@ -34,7 +34,7 @@ export const LoginForm: React.FC = () => {
         const result: LoginRes = await res.json(); // Assuming the response contains data to dispatch
         dispatch(login(result));
 
-        toast("Registrazione andata a buon fine!", {
+        toast("Accesso Eseguito!", {
           position: toast.POSITION.TOP_CENTER,
         });
         setTimeout(() => {
