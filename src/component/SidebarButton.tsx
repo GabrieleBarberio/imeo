@@ -21,7 +21,7 @@ export const SidebarButton = (props:SidebarButtonProps) => {
                     />
                     <div>
                       <h3 className="text-white"> {props.user_name} </h3>
-                      <p className="text-secondary-100"> Offline </p>
+                      <p className="text-secondary-100">Offline</p>
                     </div>
                   </button>
         </>

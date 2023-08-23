@@ -8,6 +8,7 @@ import { SidebarButton } from "./SidebarButton";
 export const Sidebar = () => {
   const [users, setUsers] = useState([]);
   const token = useSelector(s => s.auth.token)
+  const author = useSelector(s => s.auth.user_name)
 
   const fetchUsers = async() => {
     try {
@@ -118,16 +119,15 @@ export const Sidebar = () => {
           <div> {/* DIV CHE WRAPPA TUTTI GLI UTENTI  */}
 
                 {/* PRIMI TRE BOTTONI DEGLI AMICI/UTENTI */}
-                <div className="overflow-y-scroll h-[60vh] flex flex-col justify-between items-center grow ">
-                
-                {users && users.map((user)=>{ return (
+                <div className="overflow-y-scroll h-[50vh] flex flex-col justify-between items-center grow mb-5 ">
+                {users && users.map((user)=>{ 
+                  console.log(user);
                   
-                  <SidebarButton user_name={user.user_name}
-                                 img={GabrieleBarberio}
-                                
+                  return (
+                  <SidebarButton user_name={user.user_name.trim()}
+                                 img={GabrieleBarberio}            
                   />
                 )}
-                
                 )}
           
                 </div>
@@ -136,7 +136,7 @@ export const Sidebar = () => {
                 <div className="flex-col justify-center">
                   <p className="font-bold text-white ml-4 mb-2"> My Account </p> 
                   <div className="flex items-center justify-center">
-                      <SidebarButton user_name="Davide Simone"
+                      <SidebarButton user_name={author}
                                  img={GabrieleBarberio} 
                   
                       />
