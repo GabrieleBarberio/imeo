@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { login } from "../store/authSlice"; // Import the appropriate path for your auth slice
+import { login } from "../store/authSlice";
 import { ToastContainer, toast } from "react-toastify";
 interface LoginFormState {
   user_name: string;
@@ -10,6 +10,7 @@ interface LoginFormState {
 interface LoginRes {
   user_name: string;
   token: string;
+  _id: string;
 }
 export const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,9 @@ export const LoginForm: React.FC = () => {
         const result: LoginRes = await res.json(); // Assuming the response contains data to dispatch
         dispatch(login(result));
 
-        toast("Registrazione andata a buon fine!", {
+        console.log(result);
+
+        toast("Accesso Eseguito!", {
           position: toast.POSITION.TOP_CENTER,
         });
         setTimeout(() => {
