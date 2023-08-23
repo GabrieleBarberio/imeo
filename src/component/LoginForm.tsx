@@ -10,6 +10,7 @@ interface LoginFormState {
 interface LoginRes {
   user_name: string;
   token: string;
+  _id: string;
 }
 export const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,8 @@ export const LoginForm: React.FC = () => {
       if (res.ok) {
         const result: LoginRes = await res.json(); // Assuming the response contains data to dispatch
         dispatch(login(result));
+
+        console.log(result);
 
         toast("Accesso Eseguito!", {
           position: toast.POSITION.TOP_CENTER,
