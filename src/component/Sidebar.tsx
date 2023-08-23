@@ -24,7 +24,7 @@ export const Sidebar = () => {
       <div className="bg-blacky-300 w-1/4 h-screen ">
         {/* LOGO */}
         <div className="flex justify-center">
-          <img src={logoimeo} className="w-[120px]" alt="logo" />
+          <img src={logoimeo} className="w-[100px]" alt="logo" />
         </div>
 
         {/* main */}
