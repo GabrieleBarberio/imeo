@@ -1,5 +1,4 @@
 import { Sidebar } from "../component/Sidebar"
-import GabrieleBarberio from "../assets/GabrieleBaberio.png"
 import { Header } from "../component/HeaderChat"
 
 export const ChatFE = () => {
