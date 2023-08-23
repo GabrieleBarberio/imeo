@@ -36,7 +36,7 @@ export const Sidebar = () => {
 
   return (
     <>
-      <div className="bg-blacky-300 w-1/4 flex-col h-screen">
+      <div className="bg-blacky-300 w-1/4 flex-col h-[100vh]">
         {/* DIV CHE WRAPPA ASIDE */}
         <div>
           <div className="flex justify-center">
@@ -118,7 +118,7 @@ export const Sidebar = () => {
           <div> {/* DIV CHE WRAPPA TUTTI GLI UTENTI  */}
 
                 {/* PRIMI TRE BOTTONI DEGLI AMICI/UTENTI */}
-                <div className="overflow-auto flex flex-col justify-between items-center ">
+                <div className="overflow-y-scroll h-[60vh] flex flex-col justify-between items-center grow ">
                 
                 {users && users.map((user)=>{ return (
                   
