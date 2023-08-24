@@ -2,25 +2,71 @@ import { Sidebar } from "../component/Sidebar";
 import { Header } from "../component/HeaderChat";
 
 export const ChatFE = () => {
-    return(
-        <>
-        
-        <div className="flex w-4/4 bg-blacky-300">
-            <Sidebar />
-            <div className="w-3/4">
-                <Header />
-                <div className="bg-blacky-300">
+  return (
+    <>
+      <div className="flex w-4/4 bg-blacky-300">
+        <Sidebar />
+        <div className="w-3/4">
+          <Header />
+          <div className="bg-blacky-300">
 
-                <div className="flex flex-end justify-center items-end relative">
-                    <input className="w-4/5 border-none p-3 rounded-lg bg-secondary-400 "
-                           type="text" 
-                           placeholder="Scrivi un messaggio"
-                           />     
-                </div>                                        
 
-                </div>
-            </div>            
+            <div className="flex-col items-center">
+              <div className="border-2 h-[60vh] mr-3 ml-2 mt-1">
+                <h1 className="text-white"> Hello</h1>
+              </div>
+              <div className="flex justify-center">
+                <input
+                  className="w-full mt-10 ml-2 mr-3 border-none p-4 rounded-lg bg-secondary-400 "
+                  type="text"
+                  placeholder="Scrivi un messaggio"     
+                />
+               <i>
+                    <svg
+                      width="45"
+                      height="45"
+                      viewBox="0 0 70 70"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clipPath="url(#clip0_6_150)">
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M15.2856 1.95262C16.5359 0.702379 18.2316 0 19.9997 0C21.7678 0 23.4635 0.702379 24.7137 1.95262C25.964 3.20286 26.6663 4.89856 26.6663 6.66667V20C26.6663 21.7681 25.964 23.4638 24.7137 24.714C23.4635 25.9643 21.7678 26.6667 19.9997 26.6667C18.2316 26.6667 16.5359 25.9643 15.2856 24.714C14.0354 23.4638 13.333 21.7681 13.333 20V6.66667C13.333 4.89856 14.0354 3.20286 15.2856 1.95262ZM19.9997 3.33333C19.1156 3.33333 18.2678 3.68452 17.6427 4.30964C17.0175 4.93476 16.6663 5.78261 16.6663 6.66667V20C16.6663 20.8841 17.0175 21.7319 17.6427 22.357C18.2678 22.9821 19.1156 23.3333 19.9997 23.3333C20.8837 23.3333 21.7316 22.9821 22.3567 22.357C22.9818 21.7319 23.333 20.8841 23.333 20V6.66667C23.333 5.78261 22.9818 4.93476 22.3567 4.30964C21.7316 3.68452 20.8837 3.33333 19.9997 3.33333Z"
+                          fill="white"
+                        />
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M8.33366 15C9.25413 15 10.0003 15.7462 10.0003 16.6667V20C10.0003 22.6522 11.0539 25.1957 12.9293 27.0711C14.8046 28.9464 17.3482 30 20.0003 30C22.6525 30 25.196 28.9464 27.0714 27.0711C28.9468 25.1957 30.0003 22.6522 30.0003 20V16.6667C30.0003 15.7462 30.7465 15 31.667 15C32.5875 15 33.3337 15.7462 33.3337 16.6667V20C33.3337 23.5362 31.9289 26.9276 29.4284 29.4281C26.9279 31.9286 23.5365 33.3333 20.0003 33.3333C16.4641 33.3333 13.0727 31.9286 10.5722 29.4281C8.07175 26.9276 6.66699 23.5362 6.66699 20V16.6667C6.66699 15.7462 7.41318 15 8.33366 15Z"
+                          fill="white"
+                        />
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19.9997 30C20.9201 30 21.6663 30.7462 21.6663 31.6667V38.3333C21.6663 39.2538 20.9201 40 19.9997 40C19.0792 40 18.333 39.2538 18.333 38.3333V31.6667C18.333 30.7462 19.0792 30 19.9997 30Z"
+                          fill="white"
+                        />
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M11.667 38.3333C11.667 37.4128 12.4132 36.6666 13.3337 36.6666H26.667C27.5875 36.6666 28.3337 37.4128 28.3337 38.3333C28.3337 39.2538 27.5875 40 26.667 40H13.3337C12.4132 40 11.667 39.2538 11.667 38.3333Z"
+                          fill="white"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_6_150">
+                          <rect width="40" height="40" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+               </i>
+              </div>
+            </div>
+          </div>
         </div>
-        </>
-    )
-}
+      </div>
+    </>
+  );
+};
