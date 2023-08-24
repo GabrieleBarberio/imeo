@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client"; // Assicurati che io e Socket siano importati dal modulo corretto
-import { Body } from "./BodyChat";
+import { BodyChat } from "./BodyChat";
 import { SendForm } from "./SendForm";
 import { useSelector } from "react-redux";
 
@@ -53,7 +53,7 @@ export const Chat: React.FC = () => {
   const socket: Socket = io("http://localhost:3030"); // Connessione socket al server
 
   useEffect(() => {
-    socket.emit("joinRoom", "room"); //commessione alla room"Room"  da rednere dinamico in base agli utenti
+    socket.emit("joinRoom", "64c7f225454147828a86a31d"); //commessione alla room"Room"  da rednere dinamico in base agli utenti
 
     socket.on("chatMessage", (message: Message) => {
       console.log("user connect", author);
@@ -69,14 +69,14 @@ export const Chat: React.FC = () => {
   }, []); // Connessione aperta quando il componente viene montato
 
   const handleSendMessage = (text: string) => {
-    const message: Message = { author, text };
+    const message: Message = { author, text, id };
     socket.emit("chatMessage", message);
   };
 
   return (
     <div>
       <h1>Chat</h1>
-      <Body messages={messages} />
+      <BodyChat messages={messages} />
       <SendForm onSubmit={handleSendMessage} />
     </div>
   );
