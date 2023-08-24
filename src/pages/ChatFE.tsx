@@ -73,14 +73,16 @@ export const ChatFE = () => {
   };
   return (
     <>
-      <div className="flex w-4/4 bg-blacky-300">
-        <Sidebar />
-        <div className="w-3/4">
-          <Header />
-          <div className="bg-blacky-300">
-            <div className="flex flex-end justify-center items-end relative">
-              <BodyChat messages={messages} />
-              <SendForm onSubmit={handleSendMessage} />
+      <div className="h-screen w-screen bg-blacky-300">
+        <div className="flex  w-full">
+          <Sidebar />
+          <div className="w-3/4">
+            <Header />
+            <div>
+              <div className="">
+                <BodyChat messages={messages} />
+                <SendForm onSubmit={handleSendMessage} />
+              </div>
             </div>
           </div>
         </div>

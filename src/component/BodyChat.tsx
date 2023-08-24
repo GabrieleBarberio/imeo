@@ -12,13 +12,7 @@ interface MessageListProps {
 
 export const BodyChat: React.FC<MessageListProps> = ({ messages }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "1.2rem",
-      }}
-    >
+    <div className=" flex  flex-col gap-2 grow-1">
       {messages &&
         messages.map((message, i) => (
           <Bubble key={i} author={message.author} message={message.text} />

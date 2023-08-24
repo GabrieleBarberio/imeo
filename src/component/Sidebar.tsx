@@ -7,10 +7,11 @@ import { SidebarButton } from "./SidebarButton";
 
 export const Sidebar = () => {
   const [users, setUsers] = useState([]);
-  const token = useSelector((s) => s.auth.token);
-  const author = useSelector((s) => s.auth.user_name);
+  const token: string | null = useSelector((s) => s.auth.token);
+  const author: string | null = useSelector((s) => s.auth.user_name);
+  const _id: string | null = useSelector((s) => s.auth._id);
 
-  const fetchUsers = async () => {
+  const fetchUsers = async (): Promise<void> => {
     try {
       const response = await fetch("http://localhost:3030/api/users", {
         method: "GET",
@@ -21,7 +22,7 @@ export const Sidebar = () => {
       if (!response.ok) {
         throw new Error("fail fetch user");
       }
-      const users = await response.json();
+      const users: any = await response.json();
       console.log(users);
       setUsers(users);
     } catch (error) {
@@ -33,7 +34,9 @@ export const Sidebar = () => {
   useEffect(() => {
     fetchUsers();
   }, []);
-
+  const handleClick = (id: string): void => {
+    console.log(id);
+  };
   return (
     <>
       <div className="bg-blacky-300 w-1/4 flex-col h-[100vh]">
@@ -125,8 +128,9 @@ export const Sidebar = () => {
                   return (
                     <div key={i}>
                       <SidebarButton
-                        user_name={user.user_name.trim()}
+                        user_name={user.user_name}
                         img={GabrieleBarberio}
+                        handleClick={() => handleClick(_id)}
                       />
                     </div>
                   );
@@ -136,7 +140,11 @@ export const Sidebar = () => {
             <div className="flex-col justify-center">
               <p className="font-bold text-white ml-4 mb-2"> My Account </p>
               <div className="flex items-center justify-center">
-                <SidebarButton user_name={author} img={GabrieleBarberio} />
+                <SidebarButton
+                  user_name={author}
+                  img={GabrieleBarberio}
+                  handleClick={() => handleClick(_id)}
+                />
               </div>
             </div>
           </div>

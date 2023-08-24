@@ -16,13 +16,17 @@ export const SendForm: React.FC<SendFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={sendMessage}>
-      <input
-        value={inputMessage}
-        onChange={(e) => setInputMessage(e.target.value)}
-        autoComplete="off"
-      />
-      <button type="submit">Send</button>
-    </form>
+    <>
+      <div className="w-[100%]">
+        <form onSubmit={sendMessage}>
+          <input
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+            autoComplete="off"
+          />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </>
   );
 };
