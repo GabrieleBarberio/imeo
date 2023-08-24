@@ -16,12 +16,13 @@ export const SendForm: React.FC<SendFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={sendMessage} className="w-[900px] mt-[50px] flex items-center relative">
+    <form onSubmit={sendMessage} className="w-[900px] mt-1 flex items-center relative">
       <input
         className="w-[900px] absolute mt-10 border-none p-4 rounded-lg bg-secondary-400 "
         value={inputMessage}
         onChange={(e) => setInputMessage(e.target.value)}
         autoComplete="off"
+        placeholder="Scrivi un messaggio..."
       />
       <button type="submit" 
                           className="border-none absolute left-[93%] p-4  bg-secondary-400  mt-10">  

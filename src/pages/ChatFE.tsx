@@ -12,10 +12,10 @@ export const ChatFE = () => {
           <Header />
           <div className="bg-blacky-300">
             <div className="flex-col items-center">
-              <div className="border-2 h-[380px] mr-3 ml-2 mt-1">
+              <div className=" h-[460px] mr-3 ml-2 mt-3">
                 <Bubble />
               </div>
-              <div className="flex justify-center mt-[32px]">
+              <div className="flex justify-center ">
                 <SendForm />
                 
               </div>
