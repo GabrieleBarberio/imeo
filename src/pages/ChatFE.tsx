@@ -1,26 +1,31 @@
-import { Sidebar } from "../component/Sidebar"
-import { Header } from "../component/HeaderChat"
+import { Sidebar } from "../component/Sidebar";
+import { Header } from "../component/HeaderChat";
 
 export const ChatFE = () => {
-    return(
-        <>
-        
-        <div className="flex w-4/4 bg-blacky-300">
-            <Sidebar />
-            <div className="w-3/4">
-                <Header />
-                <div className="bg-blacky-300">
+  return (
+    <>
+      <div className="flex w-4/4 bg-blacky-300">
+        <Sidebar />
+        <div className="w-3/4">
+          <Header />
+          <div className="bg-blacky-300">
 
-                <div className="flex flex-end justify-center items-end relative">
-                    <input className="w-4/5 border-none p-3 rounded-lg bg-secondary-400 "
-                           type="text" 
-                           placeholder="Scrivi un messaggio"
-                           />     
-                </div>                                        
 
-                </div>
-            </div>            
+            <div className="flex-col items-center">
+              <div className="border-2 h-[60vh] mr-3 ml-2 mt-1">
+                <h1 className="text-white"> Hello</h1>
+              </div>
+              <div className="flex justify-center">
+                <input
+                  className="w-full mt-10 ml-2 mr-3 border-none p-4 rounded-lg bg-secondary-400 "
+                  type="text"
+                  placeholder="Scrivi un messaggio"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-        </>
-    )
-}
+      </div>
+    </>
+  );
+};
