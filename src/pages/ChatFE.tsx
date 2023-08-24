@@ -53,7 +53,7 @@ export const ChatFE = () => {
   //     console.log(error);
   //   });
 
-  const room = `${recipientId} ${author._id}`;
+  const room = `${recipientId}-${author._id}`;
 
   const socket: Socket = io("http://localhost:3030"); // Connessione socket al server
 
@@ -74,7 +74,12 @@ export const ChatFE = () => {
   }, []); // Connessione aperta quando il componente viene montato
 
   const handleSendMessage = (text: string) => {
-    const message: Message = { author, text, _id };
+    const message: Message = {
+      author: author.user_name,
+      text,
+      from: author._id,
+      to: recipientId,
+    };
     socket.emit("chatMessage", message);
   };
 
