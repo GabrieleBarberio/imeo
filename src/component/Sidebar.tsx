@@ -5,18 +5,28 @@ import { CoupledBtn } from "./shared/CoupledBtn";
 import { useSelector } from "react-redux";
 import { SidebarButton } from "./SidebarButton";
 
-export const Sidebar = () => {
-  const [users, setUsers] = useState([]);
-  const token: string | null = useSelector((s) => s.auth.token);
-  const author: string | null = useSelector((s) => s.auth.user_name);
-  const _id: string | null = useSelector((s) => s.auth._id);
+interface SidebarProps {
+  handleClicked: (_id: string | null) => void;
+}
+interface User {
+  user_name: string;
+}
+interface AuthState {
+  token: string | null;
+  user_name: string | null;
+  _id: string | null;
+}
+
+export const Sidebar = ({ handleClicked }: SidebarProps) => {
+  const [users, setUsers] = useState<User[]>([]);
+  const author: AuthState = useSelector((s) => s.auth);
 
   const fetchUsers = async (): Promise<void> => {
     try {
       const response = await fetch("http://localhost:3030/api/users", {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${author.token}`,
         },
       });
       if (!response.ok) {
@@ -34,9 +44,7 @@ export const Sidebar = () => {
   useEffect(() => {
     fetchUsers();
   }, []);
-  const handleClick = (id: string): void => {
-    console.log(id);
-  };
+
   return (
     <>
       <div className="bg-blacky-300 w-1/4 flex-col h-[100vh]">
@@ -122,7 +130,7 @@ export const Sidebar = () => {
             {/* PRIMI TRE BOTTONI DEGLI AMICI/UTENTI */}
             <div className="overflow-y-scroll h-[50vh] flex flex-col justify-between items-center grow mb-5 ">
               {users &&
-                users.map((user, i) => {
+                users.map((user: string, i: number) => {
                   console.log(user);
 
                   return (
@@ -130,7 +138,7 @@ export const Sidebar = () => {
                       <SidebarButton
                         user_name={user.user_name}
                         img={GabrieleBarberio}
-                        handleClick={() => handleClick(_id)}
+                        handleClick={() => handleClicked(user._id)}
                       />
                     </div>
                   );
@@ -141,9 +149,9 @@ export const Sidebar = () => {
               <p className="font-bold text-white ml-4 mb-2"> My Account </p>
               <div className="flex items-center justify-center">
                 <SidebarButton
-                  user_name={author}
+                  user_name={author.user_name}
                   img={GabrieleBarberio}
-                  handleClick={() => handleClick(_id)}
+                  handleClick={() => handleClicked(author._id)}
                 />
               </div>
             </div>

@@ -10,49 +10,55 @@ interface Message {
   author: string;
   text: string;
 }
+interface AuthState {
+  token: string;
+  user_name: string;
+  _id: string;
+}
 
 export const ChatFE = () => {
   const [messages, setMessages] = useState<Message[]>([]);
-  const author = useSelector((s) => s.auth.user_name); // Dovrà essere dinamico in base a chi ha fatto il login (?) Utilizziamo Redux
-  const token = useSelector((s) => s.auth.token);
-  const _id = useSelector((s) => s.auth._id);
+  const author: AuthState = useSelector((s) => s.auth);
+  const [recipientId, setRecipientId] = useState<string>("");
+
   //in delle utility
-  const fetchUserById = async (userId) => {
-    try {
-      const response = await fetch(
-        `http://localhost:3030/api/users/${userId}`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  // const fetchUserById = async (userId) => {
+  //   try {
+  //     const response = await fetch(
+  //       `http://localhost:3030/api/users/${userId}`,
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           Authorization: `Bearer ${author.token}`,
+  //         },
+  //       }
+  //     );
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch user");
-      }
+  //     if (!response.ok) {
+  //       throw new Error("Failed to fetch user");
+  //     }
 
-      const user = await response.json();
-      return user;
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-  };
-  const recipientId = "64c7f225454147828a86a31d"; // ID dell'utente destinatario
-  fetchUserById(recipientId)
-    .then((user) => {
-      console.log("User:", user);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  //     const user = await response.json();
+  //     return user;
+  //   } catch (error) {
+  //     console.log(error);
+  //     throw error;
+  //   }
+  // };
+  // fetchUserById(recipientId)
+  //   .then((user) => {
+  //     console.log("User:", user);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+
+  const room = `${recipientId} ${author._id}`;
 
   const socket: Socket = io("http://localhost:3030"); // Connessione socket al server
 
   useEffect(() => {
-    socket.emit("joinRoom", "64c7f225454147828a86a31d"); //commessione alla room"Room"  da rednere dinamico in base agli utenti
+    socket.emit("joinRoom", room); //commessione alla room"Room"  da rednere dinamico in base agli utenti
 
     socket.on("chatMessage", (message: Message) => {
       console.log("user connect", author);
@@ -71,11 +77,16 @@ export const ChatFE = () => {
     const message: Message = { author, text, _id };
     socket.emit("chatMessage", message);
   };
+
+  const handleClicked = (_id: string): void => {
+    console.log(_id);
+    setRecipientId(_id);
+  };
   return (
     <>
       <div className="h-screen w-screen bg-blacky-300">
         <div className="flex  w-full">
-          <Sidebar />
+          <Sidebar handleClicked={handleClicked} />
           <div className="w-3/4">
             <Header />
             <div>
