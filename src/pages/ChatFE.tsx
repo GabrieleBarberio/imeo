@@ -7,7 +7,7 @@ import { SendForm } from "../component/SendForm";
 import { useSelector } from "react-redux";
 
 interface Message {
-  author: string;
+  author: object;
   text: string;
   from: string;
   to: string;
@@ -73,15 +73,17 @@ export const ChatFE = () => {
     return () => {
       socket.disconnect(); // Chiudi la connessione WebSocket quando il componente è smontato
     };
-  }, []); // Connessione aperta quando il componente viene montato
+  }, [room]); // Connessione aperta quando il componente viene montato
 
   const handleSendMessage = (text: string) => {
     const message: Message = {
-      author: author.user_name,
+      author: author,
       text,
       from: author._id,
       to: recipientId,
     };
+    console.log(author);
+
     socket.emit("chatMessage", message);
   };
 
