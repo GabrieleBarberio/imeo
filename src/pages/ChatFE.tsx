@@ -22,7 +22,9 @@ export const ChatFE = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const author: AuthState = useSelector((s) => s.auth);
   const [recipientId, setRecipientId] = useState<string>("");
-
+  const room = `${recipientId}-${author._id}`;
+  const chatURL = `http://localhost:3030/api/chat/${room}`;
+  const socket: Socket = io("http://localhost:3030"); // Connessione socket al server
   //in delle utility
   // const fetchUserById = async (userId) => {
   //   try {
@@ -54,12 +56,25 @@ export const ChatFE = () => {
   //   .catch((error) => {
   //     console.log(error);
   //   });
-
-  const room = `${recipientId}-${author._id}`;
-
-  const socket: Socket = io("http://localhost:3030"); // Connessione socket al server
+  const fetchMessages = async () => {
+    try {
+      const res = await fetch(chatURL, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${author.token}`,
+        },
+      });
+      const messages = await res.json();
+      console.log(messages);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
+    fetchMessages;
+
+    // Usa i messaggi ottenuti come necessario
     socket.emit("joinRoom", room); //commessione alla room"Room"  da rednere dinamico in base agli utenti
 
     socket.on("chatMessage", (message: Message) => {
