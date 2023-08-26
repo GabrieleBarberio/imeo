@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 interface Message {
   author: string;
   text: string;
+  from: string;
+  to: string;
 }
 interface AuthState {
   token: string;
