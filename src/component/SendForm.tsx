@@ -25,7 +25,7 @@ export const SendForm: React.FC<SendFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <div className="flex justify-center w-4/4 relative">
+    <div className="flex justify-center w-4/4 relative mt-2">
       <form
         onSubmit={sendMessage}
         className="w-[90%] mt-1 flex items-center absolute "
@@ -39,7 +39,7 @@ export const SendForm: React.FC<SendFormProps> = ({ onSubmit }) => {
         />
         <button
           type="submit"
-          className="border-none absolute left-[84%] rounded-lg p-1 bg-secondary-400"
+          className="border-none absolute left-[82%] rounded-lg p-1 bg-secondary-400"
         >
           <i>
             <svg
