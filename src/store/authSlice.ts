@@ -1,23 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { save, get, remove } from "../utility/internalMemory";
 
-interface AuthState {
-  token: string | null;
-  user_name: string | null;
-  _id: string | null;
+export interface AuthState {
+  token: string ;
+  user_name: string ;
+  _id: string ;
 }
 
 const initialState: AuthState = {
-  token: String(get("token")) || null,
-  user_name: String(get("user_name")) || null,
-  _id: String(get("_id")) || null,
+  token: String(get("token")) ,
+  user_name: String(get("user_name")),
+  _id: String(get("_id")),
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    login: (state, action: PayloadAction<{ token: string; user_name: string }>) => {
+    login: (state, action: PayloadAction<{ token: string; user_name: string; _id: string; }>) => {
       state.token = action.payload.token;
       state.user_name = action.payload.user_name;
       state._id = action.payload._id;
@@ -27,13 +27,12 @@ const authSlice = createSlice({
     },
 
     logout: (state) => {
-      state.token = null;
-      state.user_name = null;
-      state._id= null;
-
+      state.token = "";
+      state.user_name = "";
+      state._id = "";
       remove("token");
       remove("user_name");
-      remove("_id")
+      remove("_id");
     },
   },
 });

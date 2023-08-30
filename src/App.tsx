@@ -8,6 +8,7 @@ import { Contact } from "./pages/Contact";
 import { DesignSystem } from "./pages/DesignSystem";
 import { SignIn } from "./pages/SignIn";
 import { Sidebar } from "./component/Sidebar";
+import { ChatFE } from "./pages/ChatFE";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/chat" element={<Sidebar />} />
+        <Route path="/chatlayout" element={<ChatFE />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </>

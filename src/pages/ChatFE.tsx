@@ -5,19 +5,10 @@ import { useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
 import { SendForm } from "../component/SendForm";
 import { useDispatch, useSelector } from "react-redux";
-import { addMessage, setMessages } from "../store/messageSlice";
+import { Message, addMessage, setMessages } from "../store/messageSlice";
+import { RootState } from "../store";
 
-interface Message {
-  author: object;
-  text: string;
-  from: string;
-  to: string;
-}
-interface AuthState {
-  token: string;
-  user_name: string;
-  _id: string;
-}
+// type Chat = m[];
 
 /**
  *
@@ -27,30 +18,33 @@ interface AuthState {
  */
 
 export const ChatFE = () => {
-  // const [messages, setMessages] = useState<Message[]>([]);
-  const messages = useSelector((s) => s.messages);
-  const author: AuthState = useSelector((s) => s.auth);
+  const messages = useSelector((s: RootState) => s.chat.messages);
+  const author = useSelector((s: RootState) => s.auth);
   const dispatch = useDispatch();
   const [recipientId, setRecipientId] = useState<string>("");
   const room = `${recipientId}-${author._id}`;
-  const chatURL = `http://localhost:3030/api/chat/${room}`;
+  const chatURL = `http://localhost:3030/api/chat/`;
   const socket: Socket = io("http://localhost:3030"); // Connessione socket al server
 
   const fetchMessages = async () => {
     try {
-      const res = await fetch(chatURL, {
+      const res = await fetch(`${chatURL}/${room}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${author.token}`,
         },
       });
-      const messages = await res.json();
-      dispatch(setMessages(messages));
-      console.log(messages);
+      const history = await res.json();
+      dispatch(setMessages(history));
+      console.log("history:", history);
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (recipientId !== "") fetchMessages();
+  }, [recipientId]);
 
   useEffect(() => {
     socket.emit("joinRoom", room); //commessione alla room"Room"  da rednere dinamico in base agli utenti
@@ -58,10 +52,7 @@ export const ChatFE = () => {
     socket.on("chatMessage", (message: Message) => {
       console.log("user connect", author);
 
-      // Ricezione dei messaggi dal server
-      dispatch(addMessage(message));
-
-      console.log(message);
+      // console.log(message);
     });
 
     return () => {
@@ -69,24 +60,26 @@ export const ChatFE = () => {
     };
   }, []); // Connessione aperta quando il componente viene montato
 
-  useEffect(() => {
-    fetchMessages();
-  }, [recipientId]);
-
-  const handleSendMessage = (text: string) => {
+  const handleSendMessage = (content: string) => {
     const message: Message = {
       author: author,
-      text,
+      content,
       from: author._id,
       to: recipientId,
     };
-    console.log(author);
+    console.log("author:", author);
+    console.log("author id:", author._id);
+
+    // Ricezione dei messaggi dal server
+    dispatch(addMessage(message));
+    console.log("author:", author);
+    console.log("message:", message);
 
     socket.emit("chatMessage", message);
   };
 
   const handleClicked = (_id: string): void => {
-    console.log(_id);
+    // console.log(_id);
     setRecipientId(_id);
   };
   return (
@@ -97,8 +90,9 @@ export const ChatFE = () => {
           <div className="w-3/4">
             <Header />
             <div>
-              <div className="">
-                {messages && <BodyChat messages={messages} />}
+              <div>
+                <BodyChat messages={messages} />
+
                 <SendForm onSubmit={handleSendMessage} />
               </div>
             </div>

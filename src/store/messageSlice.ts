@@ -1,22 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppThunk, RootState } from './store'; // Assumi che il tuo store sia organizzato in questo modo
 
-interface Message {
-  author: object;
-  text: string;
+export interface Message {
+  author: object ;
+  content: string ;
   from: string;
-  to: string;
+  to: string ;
 }
 
-interface MessagesState {
+export interface MessageState {
   messages: Message[];
 }
 
-const initialState: MessagesState = {
+const initialState: MessageState = {
   messages: [],
 };
 
-const messagesSlice = createSlice({
+const messageSlice = createSlice({
   name: 'message',
   initialState,
   reducers: {
@@ -29,6 +28,6 @@ const messagesSlice = createSlice({
   },
 });
 
-export const { setMessages, addMessage } = messagesSlice.actions;
+export const { setMessages, addMessage } = messageSlice.actions;
 
-export default messagesSlice.reducer;
+export default messageSlice.reducer;

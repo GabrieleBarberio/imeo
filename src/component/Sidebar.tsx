@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { SidebarButton } from "./SidebarButton";
 
 interface SidebarProps {
-  handleClicked: (_id: string | null) => void;
+  handleClicked: (_id: string) => void;
 }
 interface User {
   createdAt: string;
@@ -17,15 +17,19 @@ interface User {
   user_name: string;
   _id: string;
 }
-type AuthState = {
+
+interface AuthState {
   token: string;
   user_name: string;
   _id: string;
+}
+type RootState = {
+  auth: AuthState;
 };
 
-export const Sidebar = ({}: SidebarProps) => {
+export const Sidebar = ({ handleClicked }: SidebarProps) => {
   const [users, setUsers] = useState<User[]>([]);
-  const author: AuthState = useSelector((s) => s.auth);
+  const author = useSelector<RootState>((s) => s.auth);
 
   const fetchUsers = async (): Promise<void> => {
     try {
@@ -38,7 +42,7 @@ export const Sidebar = ({}: SidebarProps) => {
       if (!response.ok) {
         throw new Error("fail fetch user");
       }
-      const users = await response.json();
+      const users: User[] = await response.json();
       console.log("users:", users);
       setUsers(users);
     } catch (error) {
