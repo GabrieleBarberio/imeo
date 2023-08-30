@@ -20,6 +20,8 @@ export const SendForm: React.FC<SendFormProps> = ({ onSubmit }) => {
     if (inputMessage.trim() === "") return;
     onSubmit(inputMessage);
     setInputMessage("");
+    onSubmit(inputMessage);
+    setInputMessage("")
   };
 
   return (
@@ -37,12 +39,12 @@ export const SendForm: React.FC<SendFormProps> = ({ onSubmit }) => {
         />
         <button
           type="submit"
-          className="border-none absolute left-[84%] rounded-lg p-4 bg-secondary-400"
+          className="border-none absolute left-[84%] rounded-lg p-1 bg-secondary-400"
         >
           <i>
             <svg
-              width="16"
-              height="24"
+              width="50"
+              height="30"
               viewBox="0 0 65 65"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

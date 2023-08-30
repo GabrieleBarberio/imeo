@@ -6,6 +6,8 @@ interface BubbleProps {
   author: string;
 }
 
+
+
 export const Bubble = (props: BubbleProps) => {
   const author = useSelector((s) => s.auth.user_name);
   const currentUser: boolean = props.author === author;
@@ -13,13 +15,13 @@ export const Bubble = (props: BubbleProps) => {
   return (
     <div
       className={clsx(
-        " w-[100px] flex over flex-col items-start rounded-2xl bg-primary-300 text-white p-4 ]",
+        "w-[30%] p-3 flex flex-col gap-1 overflow-auto rounded-2xl bg-primary-300 text-white ]",
         currentUser && "  mr-auto ",
         !currentUser && " ml-auto "
       )}
     >
-      <span className=" text-secondary-100 ">{props.author}</span>
-      <span>{props.message}</span>
+      <span className=" text-secondary-100 flex"> {props.author} Gabriele Barberio </span>
+      <span className=" p-1 break-all "> {props.message} afaefafeeffeefaefeaiejhifjei fsgrgsgggrsgsrggsgsgsgsrggsgrsdgsgsgrgsgsgsrrsrgsrgsgsrgsgsgsgrsggsgsrsgeife </span>
     </div>
   );
 };
