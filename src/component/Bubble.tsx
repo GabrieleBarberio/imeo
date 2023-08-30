@@ -8,7 +8,7 @@ interface BubbleProps {
 }
 
 export const Bubble = (props: BubbleProps) => {
-  const author = useSelector((s: RootState) => s.auth.user_name);
+  const author = useSelector((s: RootState) => s.auth._id);
   const currentUser: boolean = props.author === author;
   console.log(props);
 
