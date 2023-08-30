@@ -23,13 +23,13 @@ export const SendForm: React.FC<SendFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <div className="flex justify-center w-4/4">
+    <div className="flex justify-center w-4/4 relative">
       <form
         onSubmit={sendMessage}
-        className="w-[900px] mt-1 flex items-center relative"
+        className="w-[90%] mt-1 flex items-center absolute "
       >
         <input
-          className="w-[900px] absolute mt-10 border-none p-4 rounded-lg bg-secondary-400 text-white"
+          className="w-[90%]  border-none p-4 rounded-lg bg-secondary-400 text-white"
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
           autoComplete="off"
@@ -37,7 +37,7 @@ export const SendForm: React.FC<SendFormProps> = ({ onSubmit }) => {
         />
         <button
           type="submit"
-          className="border-none absolute left-[93%] p-4  bg-secondary-400  mt-10"
+          className="border-none absolute left-[84%] rounded-lg p-4 bg-secondary-400"
         >
           <i>
             <svg

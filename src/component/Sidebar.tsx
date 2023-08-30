@@ -36,9 +36,9 @@ export const Sidebar = () => {
 
   return (
     <>
-      <div className="bg-blacky-300 w-1/4 flex-col max-h-screen">
+      <div className="bg-blacky-300 w-[25%] flex-col h-[100%] ">
         {/* DIV CHE WRAPPA ASIDE */}
-        <div className="h-screen">
+        <div className="">
           <div className="flex justify-center">
             <img src={logoimeo} alt="logoimeo" className="w-[100px]" />
           </div>

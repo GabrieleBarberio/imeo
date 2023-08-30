@@ -1,10 +1,12 @@
 import GabrieleBarberio from "../assets/GabrieleBaberio.png";
+import { Bubble } from "./Bubble";
+import { SendForm } from "./SendForm";
 
 export const Header = () => {
   return (
-    <div className="bg-blacky-300 w-4/4 ">
-      <div className="flex justify-between m-2 items-center border-solid border-b border-gray-300">
-        <div className="flex ml-2 items-center gap-3 m-2">
+    <div className="bg-blacky-300 w-4/4 h-screen">
+      <div className="flex justify-between  items-center border-solid border-b border-gray-300">
+        <div className="flex ml-2 items-center gap-3 m-4">
           <img src={GabrieleBarberio} alt="" />
           <div>
             <h1 className="text-white text-lg "> Davide Simone</h1>
@@ -59,6 +61,20 @@ export const Header = () => {
           <button className="border rounded-lg bg-black p-4"></button>
         </div>
       </div>
+
+      {/* BOX CHAT ED INPUT */}
+      <div className="col flex-col gap-9 h-[63vh]"> 
+        {/* DIV BOX CHAT */}
+       <div className="border-2 flex-col h-full m-2">
+          <Bubble />
+       </div>
+              {/* DIV FORM SEND TXT */}
+       <div className="">
+        <SendForm />
+       </div>
+      </div>
+
+
     </div>
   );
 };
