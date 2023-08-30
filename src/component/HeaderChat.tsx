@@ -62,16 +62,16 @@ export const Header = () => {
       </div>
 
       {/* BOX CHAT ED INPUT */}
-      <div className="col flex-col gap-9 h-[63vh]">
+      <div className="col flex-col gap-9 h-[63vh] overflow-y-scroll">
         {/* DIV BOX CHAT */}
-        <div className=" flex-col h-full m-2">
+        <div className=" flex-col h-full m-2 ">
           <Bubble />
         </div>
         {/* DIV FORM SEND TXT */}
-        <div className="">
+      </div>
+      <div className="">
           <SendForm />
         </div>
-      </div>
     </div>
   );
 };
