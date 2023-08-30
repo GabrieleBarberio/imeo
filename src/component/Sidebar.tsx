@@ -9,15 +9,21 @@ interface SidebarProps {
   handleClicked: (_id: string | null) => void;
 }
 interface User {
+  createdAt: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  updatedAt: string;
   user_name: string;
+  _id: string;
 }
-interface AuthState {
-  token: string | null;
-  user_name: string | null;
-  _id: string | null;
-}
+type AuthState = {
+  token: string;
+  user_name: string;
+  _id: string;
+};
 
-export const Sidebar = ({ handleClicked }: SidebarProps) => {
+export const Sidebar = ({}: SidebarProps) => {
   const [users, setUsers] = useState<User[]>([]);
   const author: AuthState = useSelector((s) => s.auth);
 
@@ -32,8 +38,8 @@ export const Sidebar = ({ handleClicked }: SidebarProps) => {
       if (!response.ok) {
         throw new Error("fail fetch user");
       }
-      const users: any = await response.json();
-      console.log(users);
+      const users = await response.json();
+      console.log("users:", users);
       setUsers(users);
     } catch (error) {
       console.log(error);
@@ -130,7 +136,7 @@ export const Sidebar = ({ handleClicked }: SidebarProps) => {
             {/* PRIMI TRE BOTTONI DEGLI AMICI/UTENTI */}
             <div className="overflow-y-scroll h-[50vh] flex flex-col justify-between items-center grow mb-5 ">
               {users &&
-                users.map((user: string, i: number) => {
+                users.map((user, i: number) => {
                   console.log(user);
 
                   return (

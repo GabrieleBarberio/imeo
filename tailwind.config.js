@@ -13,7 +13,11 @@ export default {
       fumetto: ["Bangers", "cursive"],
     },
     extend: {
-      spacing: { mww: "1380px" },
+      screens: {
+        lines: "1550px",
+        mww: "1380px",
+      },
+      maxWidth: { mww: "1380px" },
       colors: {
         transparent: "transparent",
         current: "currentColor",

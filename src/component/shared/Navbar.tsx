@@ -10,16 +10,19 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="bg-blacky-100">
-      <div className="2xl:max-w-[1440px] mx-auto flex justify-between items-center px-4 md:px-6 lg:px-8 h-[80px]">
+    <nav className="relative navBefore">
+      <div className="2xl:max-w-[1440px] mx-auto flex justify-between items-center px-4 md:px-6 lg:px-8 max-h-[92px] relative z-10 max-md:max-h-[50px]">
         <div className="md:hidden">
-          <button className="site-secondary" onClick={handleMenuClick}>
+          <button
+            className="site-secondary max-md:px-4 max-md:py-0 max-md:min-w-[80px]"
+            onClick={handleMenuClick}
+          >
             MENU
           </button>
         </div>
         <div className="flex items-center">
           <Link to="/">
-            <img src={logoimeo} className="w-[120px]" alt="imeo logo" />
+            <img src={logoimeo} className="max-w-[120px]" alt="imeo logo" />
           </Link>
         </div>
 
@@ -27,16 +30,15 @@ export const Navbar = () => {
           <Link to="design">
             <span>Design System</span>
           </Link>
-          <Link to="*">
-            <span>Imeo Project</span>
-          </Link>
-          <Link to="*">
-            <span>About Us</span>
-          </Link>
         </div>
 
         <div className=" md:block">
-          <button className="site-secondary">APP</button>
+          <Link
+            to="/login"
+            className="site-secondary min-w-[127px] flex items-center justify-center max-md:px-4 max-md:py-0 max-md:min-w-[80px]"
+          >
+            APP
+          </Link>
         </div>
       </div>
       {/* HAMBURGER MENU */}

@@ -2,12 +2,12 @@ import clsx from "clsx";
 import { useSelector } from "react-redux";
 
 interface BubbleProps {
-  message: string;
-  author: string;
+  author: object;
+  text: string;
 }
 
 export const Bubble = (props: BubbleProps) => {
-  const author = useSelector((s) => s.auth);
+  const author: object = useSelector((s) => s.auth);
   const currentUser: boolean = props.author === author._id;
 
   return (
@@ -19,7 +19,7 @@ export const Bubble = (props: BubbleProps) => {
       )}
     >
       <span className=" text-secondary-100 ">{props.author}</span>
-      <span>{props.message}</span>
+      <span>{props.text}</span>
     </div>
   );
 };

@@ -1,10 +1,11 @@
 import { Sidebar } from "../component/Sidebar";
 import { Header } from "../component/HeaderChat";
 import { BodyChat } from "../component/BodyChat";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
 import { SendForm } from "../component/SendForm";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addMessage, setMessages } from "../store/messageSlice";
 
 interface Message {
   author: object;
@@ -18,44 +19,23 @@ interface AuthState {
   _id: string;
 }
 
+/**
+ *
+ * room: room ,
+ * messagges: []
+ * filter
+ */
+
 export const ChatFE = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
+  // const [messages, setMessages] = useState<Message[]>([]);
+  const messages = useSelector((s) => s.messages);
   const author: AuthState = useSelector((s) => s.auth);
+  const dispatch = useDispatch();
   const [recipientId, setRecipientId] = useState<string>("");
   const room = `${recipientId}-${author._id}`;
   const chatURL = `http://localhost:3030/api/chat/${room}`;
   const socket: Socket = io("http://localhost:3030"); // Connessione socket al server
-  //in delle utility
-  // const fetchUserById = async (userId) => {
-  //   try {
-  //     const response = await fetch(
-  //       `http://localhost:3030/api/users/${userId}`,
-  //       {
-  //         method: "GET",
-  //         headers: {
-  //           Authorization: `Bearer ${author.token}`,
-  //         },
-  //       }
-  //     );
 
-  //     if (!response.ok) {
-  //       throw new Error("Failed to fetch user");
-  //     }
-
-  //     const user = await response.json();
-  //     return user;
-  //   } catch (error) {
-  //     console.log(error);
-  //     throw error;
-  //   }
-  // };
-  // fetchUserById(recipientId)
-  //   .then((user) => {
-  //     console.log("User:", user);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
   const fetchMessages = async () => {
     try {
       const res = await fetch(chatURL, {
@@ -65,6 +45,7 @@ export const ChatFE = () => {
         },
       });
       const messages = await res.json();
+      dispatch(setMessages(messages));
       console.log(messages);
     } catch (error) {
       console.log(error);
@@ -72,23 +53,25 @@ export const ChatFE = () => {
   };
 
   useEffect(() => {
-    fetchMessages;
-
-    // Usa i messaggi ottenuti come necessario
     socket.emit("joinRoom", room); //commessione alla room"Room"  da rednere dinamico in base agli utenti
 
     socket.on("chatMessage", (message: Message) => {
       console.log("user connect", author);
 
       // Ricezione dei messaggi dal server
-      setMessages((prevMessages) => [...prevMessages, message]);
+      dispatch(addMessage(message));
+
       console.log(message);
     });
 
     return () => {
       socket.disconnect(); // Chiudi la connessione WebSocket quando il componente è smontato
     };
-  }, [room]); // Connessione aperta quando il componente viene montato
+  }, []); // Connessione aperta quando il componente viene montato
+
+  useEffect(() => {
+    fetchMessages();
+  }, [recipientId]);
 
   const handleSendMessage = (text: string) => {
     const message: Message = {
@@ -115,7 +98,7 @@ export const ChatFE = () => {
             <Header />
             <div>
               <div className="">
-                <BodyChat messages={messages} />
+                {messages && <BodyChat messages={messages} />}
                 <SendForm onSubmit={handleSendMessage} />
               </div>
             </div>
