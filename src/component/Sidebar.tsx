@@ -124,7 +124,7 @@ export const Sidebar = () => {
 
                   return (
                     <SidebarButton
-                      user_name={user.user_name.trim()}
+                      user_name={user.user_name}
                       img={GabrieleBarberio}
                     />
                   );

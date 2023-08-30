@@ -65,7 +65,7 @@ export const Header = () => {
       {/* BOX CHAT ED INPUT */}
       <div className="col flex-col gap-9 h-[63vh]"> 
         {/* DIV BOX CHAT */}
-       <div className="border-2 flex-col h-full m-2">
+       <div className=" flex-col h-full m-2">
           <Bubble />
        </div>
               {/* DIV FORM SEND TXT */}

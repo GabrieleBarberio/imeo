@@ -18,9 +18,10 @@ export const SidebarButton = (props:SidebarButtonProps) => {
                       alt="profilepic"
                       className="w-[60px]"
                     />
-                    <div>
+                    <div className=" flex flex-col items-start">
                       <h3 className="text-white"> {props.user_name} </h3>
-                      <p className="text-secondary-100">Offline</p>
+                      <p className="text-secondary-100 items-start
+                      ">Offline</p>
                     </div>
                   </button>
         </>
