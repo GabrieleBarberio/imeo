@@ -54,7 +54,7 @@ const messaggi = [
     from: '64e3859b7776ebe094c812da', //Davide
     to: '64c7f225454147828a86a31d', //Gabriele
     is_read: false, 
-    content: "Perfetto a dopo, buon lavoro!  ",
+    content: "Perfetto a dopo, buon lavoro!",
   },
 
   
