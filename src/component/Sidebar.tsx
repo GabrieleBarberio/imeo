@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { SidebarButton } from "./SidebarButton";
 
 interface SidebarProps {
-  handleClicked: (_id: string) => void;
+  handleClicked: (_id: string, user_name?: string) => void;
 }
 interface User {
   createdAt: string;
@@ -29,7 +29,7 @@ type RootState = {
 
 export const Sidebar = ({ handleClicked }: SidebarProps) => {
   const [users, setUsers] = useState<User[]>([]);
-  const author = useSelector<RootState>((s) => s.auth);
+  const author = useSelector((s: RootState) => s.auth);
 
   const fetchUsers = async (): Promise<void> => {
     try {

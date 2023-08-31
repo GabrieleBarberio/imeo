@@ -14,14 +14,16 @@ import { RootState } from "../store";
  * messagges: []
  * filter
  */
-
+type SendMessageFunction = (socket: Socket, message: Message) => void;
 export const ChatFE = () => {
   const messages = useSelector((s: RootState) => s.chat.messages);
   const [recepientNick, setRecipientNick] = useState<string>("");
   const author = useSelector((s: RootState) => s.auth);
   const dispatch = useDispatch();
   const [recipientId, setRecipientId] = useState<string>("");
-  const room = `${recipientId}-${author._id}`;
+  const sortedIds = [author._id, recipientId].sort();
+  const room = `${sortedIds[0]}-${sortedIds[1]}`;
+
   const chatURL = `http://localhost:3030/api/chat/`;
   const socket: Socket = io("http://localhost:3030"); // Connessione socket al server
 
@@ -46,12 +48,13 @@ export const ChatFE = () => {
   }, [recipientId]);
 
   useEffect(() => {
-    socket.emit("joinRoom", room); //commessione alla room"Room"  da rednere dinamico in base agli utenti
+    //commessione alla room"Room"  da rednere dinamico in base agli utenti
 
     socket.on("chatMessage", (message: Message) => {
       console.log("user connect", author);
       console.log("from socket:", message);
-
+      socket.emit("chatMessage", message);
+      dispatch(addMessage(message));
       // console.log(message);
     });
 
@@ -79,6 +82,7 @@ export const ChatFE = () => {
   const handleClicked = (_id: string, user_name: string): void => {
     setRecipientId(_id);
     setRecipientNick(user_name);
+    socket.emit("joinRoom", room);
   };
   return (
     <>
