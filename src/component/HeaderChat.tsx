@@ -2,16 +2,14 @@ import GabrieleBarberio from "../assets/GabrieleBaberio.png";
 import { Bubble } from "./Bubble";
 import { SendForm } from "./SendForm";
 
-export const Header = () => {
-
-
+export const Header = ({ handleSendMessage, messages, recepientNick }) => {
   return (
     <div className="bg-blacky-300 w-4/4 h-screen">
       <div className="flex justify-between  items-center border-solid border-b border-gray-300">
         <div className="flex ml-2 items-center gap-3 m-4">
           <img src={GabrieleBarberio} alt="" />
           <div>
-            <h1 className="text-white text-lg "> Davide Simone</h1>
+            <h1 className="text-white text-lg "> {recepientNick}</h1>
             <p className="text-secondary-100"> Il mio stato </p>
           </div>
         </div>
@@ -57,7 +55,6 @@ export const Header = () => {
               </svg>
             </i>
           </button>
-          
         </div>
       </div>
 
@@ -65,13 +62,16 @@ export const Header = () => {
       <div className="col flex-col gap-9 h-[63vh] overflow-y-scroll">
         {/* DIV BOX CHAT */}
         <div className=" flex-col h-full m-2 ">
-          <Bubble />
+          {messages &&
+            messages.map((message: object, i: number) => (
+              <Bubble key={i} author={message.from} message={message.content} />
+            ))}
         </div>
         {/* DIV FORM SEND TXT */}
       </div>
       <div className="">
-          <SendForm />
-        </div>
+        <SendForm onSubmit={handleSendMessage} />
+      </div>
     </div>
   );
 };

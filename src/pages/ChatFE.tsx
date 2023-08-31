@@ -1,84 +1,96 @@
 import { Sidebar } from "../component/Sidebar";
 import { Header } from "../component/HeaderChat";
+import { useEffect, useState } from "react";
+import { io, Socket } from "socket.io-client";
+import { useDispatch, useSelector } from "react-redux";
+import { Message, addMessage, setMessages } from "../store/messageSlice";
+import { RootState } from "../store";
 
+// type Chat = m[];
 
-//!!** scrivo array con i messaggi e poi fai ritornare col map usando il bubble
-
-const messaggi = [
-  {
-    _id: '64c7f225454147828a86a31d', // ID di mongo Che salva in automatico nella collection 
-    from: '64e3859b7776ebe094c812da', // Davide
-    to: '64c7f225454147828a86a31d', // Gabriele
-    is_read: false, 
-    content: "Ciao Gabriele come stai? E' finito il lavoro su IMEO?",
-  },
-
-  {
-    _id: '64c7f225454147828a86a31d',
-    from: '64c7f225454147828a86a31d', //Gabriele 
-    to: '64e3859b7776ebe094c812da', // Davide
-    is_read: false, 
-    content: "Ciao Davide tutto bene tu? Manca da fare solo la renderizzazione dei messaggi!",
-  },
-
-  {
-    _id: '64c7f225454147828a86a31d',
-    from: '64e3859b7776ebe094c812da', //Davide
-    to: '64c7f225454147828a86a31d', //Gabriele
-    is_read: false, 
-    content: "Okay perfetto, creiamo un array di oggetti che simulano la visualizzazione dei messaggi cosi da avere una prova okay? Mentre la landing page?",
-  },
-  {
-    _id: '64c7f225454147828a86a31d',
-    from: '64c7f225454147828a86a31d',//Gabriele
-    to: '64e3859b7776ebe094c812da', //Davide
-    is_read: false, 
-    content: "Va benissimo, che dati inserisco nell'array di messaggi? Oltre a chi inviato ed il testo anche il visualizzato? Per la landing page manca solo il responsive ",
-  },
-  {
-    _id: '64c7f225454147828a86a31d',
-    from: '64e3859b7776ebe094c812da', //Davide
-    to: '64c7f225454147828a86a31d', //Gabriele
-    is_read: false, 
-    content: "Nell'array inserisci : ID di mongo automatico, FROM di chi invia il messaggio, TO per chi è destinato, IS_READ se è stato letto o meno ed un contenuto che simula la chat ",
-  },
-  {
-    _id: '64c7f225454147828a86a31d',
-    from: '64e3859b7776ebe094c812da', //Gabriele
-    to: '64c7f225454147828a86a31d', //Davide
-    is_read: false, 
-    content: "Okay perfetto vado a farlo, cinque minuti e ci sono. A dopo!",
-  },
-  {
-    _id: '64c7f225454147828a86a31d',
-    from: '64e3859b7776ebe094c812da', //Davide
-    to: '64c7f225454147828a86a31d', //Gabriele
-    is_read: false, 
-    content: "Perfetto a dopo, buon lavoro!",
-  },
-
-  
-
-]
-
-
+/**
+ *
+ * room: room ,
+ * messagges: []
+ * filter
+ */
 
 export const ChatFE = () => {
-    //in delle utility
- 
-  
+  const messages = useSelector((s: RootState) => s.chat.messages);
+  const [recepientNick, setRecipientNick] = useState<string>("");
+  const author = useSelector((s: RootState) => s.auth);
+  const dispatch = useDispatch();
+  const [recipientId, setRecipientId] = useState<string>("");
+  const room = `${recipientId}-${author._id}`;
+  const chatURL = `http://localhost:3030/api/chat/`;
+  const socket: Socket = io("http://localhost:3030"); // Connessione socket al server
 
-  // const handleSendMessage = (text: string) => {
-  //   const message: Message = { author, text };
-  //   socket.emit("chatMessage", message);
-  // };
+  const fetchMessages = async () => {
+    try {
+      const res = await fetch(`${chatURL}/${room}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${author.token}`,
+        },
+      });
+      const history = await res.json();
+      dispatch(setMessages(history));
+      console.log("history:", history);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
+  useEffect(() => {
+    if (recipientId !== "") fetchMessages();
+  }, [recipientId]);
+
+  useEffect(() => {
+    socket.emit("joinRoom", room); //commessione alla room"Room"  da rednere dinamico in base agli utenti
+
+    socket.on("chatMessage", (message: Message) => {
+      console.log("user connect", author);
+
+      // console.log(message);
+    });
+
+    return () => {
+      socket.disconnect(); // Chiudi la connessione WebSocket quando il componente è smontato
+    };
+  }, []); // Connessione aperta quando il componente viene montato
+
+  const handleSendMessage = (content: string) => {
+    const message: Message = {
+      author: author,
+      content,
+      from: author._id,
+      to: recipientId,
+    };
+    console.log("author:", author);
+    console.log("author id:", author._id);
+
+    // Ricezione dei messaggi dal server
+    dispatch(addMessage(message));
+    console.log("author:", author);
+    console.log("message:", message);
+
+    socket.emit("chatMessage", message);
+  };
+
+  const handleClicked = (_id: string, user_name: string): void => {
+    setRecipientId(_id);
+    setRecipientNick(user_name);
+  };
   return (
     <>
-      <div className="flex bg-blacky-300">
-        <Sidebar />
-        <div className="w-[75%]">
-          <Header /> 
+      <div className="flex w-4/4 bg-blacky-300">
+        <Sidebar handleClicked={handleClicked} />
+        <div className="w-3/4">
+          <Header
+            handleSendMessage={handleSendMessage}
+            messages={messages}
+            recepientNick={recepientNick}
+          />
         </div>
       </div>
     </>

@@ -19,9 +19,9 @@ export const BodyChat: React.FC<MessageListProps> = ({ messages }) => {
         gap: "1.2rem",
       }}
     >
-      {messages &&
+      {Array.isArray(messages) &&
         messages.map((message, i) => (
-          <Bubble key={i} author={message.author} message={message.text} />
+          <Bubble key={i} author={message.from} message={message.content} />
         ))}
     </div>
   );

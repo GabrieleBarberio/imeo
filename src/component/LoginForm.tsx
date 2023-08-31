@@ -3,15 +3,16 @@ import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../store/authSlice";
 import { ToastContainer, toast } from "react-toastify";
+
 interface LoginFormState {
   user_name: string;
   password: string;
 }
-interface LoginRes {
-  user_name: string;
+interface res {
   token: string;
-  _id: string;
+  user_name: string;
 }
+
 export const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
   const [form, setForm] = useState<LoginFormState>({
@@ -32,7 +33,7 @@ export const LoginForm: React.FC = () => {
       });
 
       if (res.ok) {
-        const result: LoginRes = await res.json(); // Assuming the response contains data to dispatch
+        const result: res = await res.json();
         dispatch(login(result));
 
         console.log(result);

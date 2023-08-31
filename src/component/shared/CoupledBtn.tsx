@@ -13,7 +13,7 @@ import React from "react";
 interface CoupledBtnProps {
   contentLeft: React.ReactNode | string;
   contentRight: React.ReactNode | string;
-  handleClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  // handleClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   styleLeft?: string;
   styleRight?: string;
 }

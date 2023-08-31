@@ -1,4 +1,3 @@
- 
 import logoimeo from "../assets/logoimeo.png";
 import GabrieleBarberio from "../assets/GabrieleBaberio.png";
 import { useEffect, useState } from "react";
@@ -6,27 +5,45 @@ import { CoupledBtn } from "./shared/CoupledBtn";
 import { useSelector } from "react-redux";
 import { SidebarButton } from "./SidebarButton";
 
+interface SidebarProps {
+  handleClicked: (_id: string) => void;
+}
+interface User {
+  createdAt: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  updatedAt: string;
+  user_name: string;
+  _id: string;
+}
 
+interface AuthState {
+  token: string;
+  user_name: string;
+  _id: string;
+}
+type RootState = {
+  auth: AuthState;
+};
 
-export const Sidebar = () => {
+export const Sidebar = ({ handleClicked }: SidebarProps) => {
+  const [users, setUsers] = useState<User[]>([]);
+  const author = useSelector<RootState>((s) => s.auth);
 
-  const [users, setUsers] = useState([]);
-  const token = useSelector((s) => s.auth.token);
-  const author = useSelector((s) => s.auth.user_name);
-
-  const fetchUsers = async () => {
+  const fetchUsers = async (): Promise<void> => {
     try {
       const response = await fetch("http://localhost:3030/api/users", {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${author.token}`,
         },
       });
       if (!response.ok) {
         throw new Error("fail fetch user");
       }
-      const users = await response.json();
-      console.log(users);
+      const users: User[] = await response.json();
+      console.log("users:", users);
       setUsers(users);
     } catch (error) {
       console.log(error);
@@ -123,14 +140,19 @@ export const Sidebar = () => {
             {/* PRIMI TRE BOTTONI DEGLI AMICI/UTENTI */}
             <div className="overflow-y-scroll h-[50vh] flex flex-col justify-between items-center grow mb-5 ">
               {users &&
-                users.map((user) => {
+                users.map((user, i: number) => {
                   console.log(user);
 
                   return (
-                    <SidebarButton
-                      user_name={user.user_name}
-                      img={GabrieleBarberio}
-                    />
+                    <div key={i}>
+                      <SidebarButton
+                        user_name={user.user_name}
+                        img={GabrieleBarberio}
+                        handleClick={() =>
+                          handleClicked(user._id, user.user_name)
+                        }
+                      />
+                    </div>
                   );
                 })}
             </div>
@@ -138,7 +160,11 @@ export const Sidebar = () => {
             <div className="flex-col justify-center">
               <p className="font-bold text-white ml-4 mb-2"> My Account </p>
               <div className="flex items-center justify-center">
-                <SidebarButton user_name={author} img={GabrieleBarberio} />
+                <SidebarButton
+                  user_name={author.user_name}
+                  img={GabrieleBarberio}
+                  handleClick={() => handleClicked(author._id)}
+                />
               </div>
             </div>
           </div>

@@ -4,9 +4,10 @@ export const save = (key: string, value: string): void => {
   localStorage.setItem(key, JSON.stringify(value));
 };
 
-export const get = (key: string): any => {
+export const get = <T>(key: string): T | null => {
   if (!key || typeof key !== "string") throw new Error("key must be a string!");
-  return JSON.parse(localStorage.getItem(key) || "null");
+  const value = localStorage.getItem(key);
+  return value !== null ? (JSON.parse(value) as T) : null;
 };
 
 export const remove = (key: string): void => {

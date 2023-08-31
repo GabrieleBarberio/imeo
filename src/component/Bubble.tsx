@@ -1,16 +1,16 @@
 import clsx from "clsx";
 import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 interface BubbleProps {
   message: string;
   author: string;
 }
 
-
-
 export const Bubble = (props: BubbleProps) => {
-  const author = useSelector((s) => s.auth.user_name);
+  const author = useSelector((s: RootState) => s.auth._id);
   const currentUser: boolean = props.author === author;
+  console.log(props);
 
   return (
     <div
@@ -20,8 +20,8 @@ export const Bubble = (props: BubbleProps) => {
         !currentUser && " ml-auto "
       )}
     >
-      <span className=" text-secondary-100 flex"> {props.author} Gabriele Barberio </span>
-      <span className=" p-1 break-all "> {props.message} afaefafeeffeefaefeaiejhifjei fsgrgsgggrsgsrggsgsgsgsrggsgrsdgsgsgrgsgsgsrrsrgsrgsgsrgsgsgsgrsggsgsrsgeife </span>
+      <span className=" text-secondary-100 flex"> {props.author}</span>
+      <span className=" p-1 break-all "> {props.message}</span>
     </div>
   );
 };
