@@ -82,8 +82,10 @@ export const ChatFE = () => {
   };
   return (
     <>
-      <div className="flex w-4/4 bg-blacky-300">
-        <Sidebar handleClicked={handleClicked} />
+      <div className="flex h-full w-full bg-blacky-300">
+        <div>
+          <Sidebar handleClicked={handleClicked} />
+        </div>
         <div className="w-3/4">
           <Header
             handleSendMessages={handleSendMessage}

@@ -3,8 +3,6 @@ import "./App.css";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
 import { Login } from "./pages/Login";
-import { Services } from "./pages/Services";
-import { Contact } from "./pages/Contact";
 import { DesignSystem } from "./pages/DesignSystem";
 import { SignIn } from "./pages/SignIn";
 import { ChatFE } from "./pages/ChatFE";
@@ -16,8 +14,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/design" element={<DesignSystem />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/chat" element={<ChatFE />} />
         <Route path="/*" element={<NotFound />} />
