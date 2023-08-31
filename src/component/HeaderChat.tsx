@@ -2,10 +2,10 @@ import GabrieleBarberio from "../assets/GabrieleBaberio.png";
 import { Bubble } from "./Bubble";
 import { SendForm } from "./SendForm";
 
-export const Header = ({ handleSendMessage, messages, recepientNick }) => {
+export const Header = ({ handleSendMessages, messages, recepientNick }) => {
   return (
     <div className="bg-blacky-300 w-4/4 h-screen">
-      <div className="flex justify-between  items-center border-solid border-b border-gray-300">
+      <div className="flex justify-between  items-center border-solid border-b border-borderColor">
         <div className="flex ml-2 items-center gap-3 m-4">
           <img src={GabrieleBarberio} alt="" />
           <div>
@@ -59,9 +59,9 @@ export const Header = ({ handleSendMessage, messages, recepientNick }) => {
       </div>
 
       {/* BOX CHAT ED INPUT */}
-      <div className="col flex-col gap-9 h-[63vh] overflow-y-scroll">
+      <div className="col flex-col gap-9 h-[650px] overflow-y-scroll">
         {/* DIV BOX CHAT */}
-        <div className=" flex-col h-full m-2 ">
+        <div className=" flex-col h-full gap-4 m-2 ">
           {messages &&
             messages.map((message: object, i: number) => (
               <Bubble key={i} author={message.from} message={message.content} />
@@ -69,8 +69,8 @@ export const Header = ({ handleSendMessage, messages, recepientNick }) => {
         </div>
         {/* DIV FORM SEND TXT */}
       </div>
-      <div className="">
-        <SendForm onSubmit={handleSendMessage} />
+      <div>
+        <SendForm onSubmit={handleSendMessages} />
       </div>
     </div>
   );

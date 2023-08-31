@@ -138,7 +138,7 @@ export const Sidebar = ({ handleClicked }: SidebarProps) => {
             {" "}
             {/* DIV CHE WRAPPA TUTTI GLI UTENTI  */}
             {/* PRIMI TRE BOTTONI DEGLI AMICI/UTENTI */}
-            <div className="overflow-y-scroll h-[50vh] flex flex-col justify-between items-center grow mb-5 ">
+            <div className="overflow-y-scroll max-h-[650px] gap-3 flex flex-col justify-center items-center mb-5 ">
               {users &&
                 users.map((user, i: number) => {
                   console.log(user);
@@ -157,7 +157,7 @@ export const Sidebar = ({ handleClicked }: SidebarProps) => {
                 })}
             </div>
             {/* MY ACCOUNT */}
-            <div className="flex-col justify-center">
+            <div className="flex-col justify-center p-1 border-borderColor border-t">
               <p className="font-bold text-white ml-4 mb-2"> My Account </p>
               <div className="flex items-center justify-center">
                 <SidebarButton

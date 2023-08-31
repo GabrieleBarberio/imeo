@@ -22,6 +22,7 @@ export default {
         transparent: "transparent",
         current: "currentColor",
         white: " #FFFDFA",
+        borderColor: "rgba(228, 228, 228, 0.49)",
         blacky: {
           100: "#121523",
           200: "#1d1f26",

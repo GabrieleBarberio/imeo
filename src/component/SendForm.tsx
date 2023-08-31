@@ -20,8 +20,6 @@ export const SendForm: React.FC<SendFormProps> = ({ onSubmit }) => {
     if (inputMessage.trim() === "") return;
     onSubmit(inputMessage);
     setInputMessage("");
-    onSubmit(inputMessage);
-    setInputMessage("");
   };
 
   return (

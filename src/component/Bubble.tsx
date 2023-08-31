@@ -15,7 +15,7 @@ export const Bubble = (props: BubbleProps) => {
   return (
     <div
       className={clsx(
-        "w-[30%] p-3 flex flex-col gap-1 overflow-auto rounded-2xl bg-primary-300 text-white ]",
+        "w-[30%] p-3 flex flex-col gap-1 overflow-auto m-3 rounded-2xl bg-primary-300 text-white ]",
         currentUser && "  mr-auto ",
         !currentUser && " ml-auto "
       )}
