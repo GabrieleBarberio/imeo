@@ -1,5 +1,6 @@
 import bannerspec from "../assets/banner firsdt imeo spec.png";
 import line from "../assets/line.png";
+import chat from "../assets/Senza_titolo-1.png";
 
 export const SecondSection = () => {
   return (
@@ -20,7 +21,7 @@ export const SecondSection = () => {
         </span>
       </div>
       <div className="flex-1">
-        <img className="max-w-full h-auto" src={bannerspec} />
+        <img className="max-w-full h-auto" src={chat} />
       </div>
     </div>
   );

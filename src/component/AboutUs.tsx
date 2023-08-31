@@ -1,4 +1,4 @@
-import member from "../assets/member.png";
+
 import role from "../assets/teamRole.png";
 import GabrieleBarberio from "../assets/gabriele-transparent.png";
 import DavideSimone from "../assets/davide-transparent.png";
@@ -59,7 +59,7 @@ function AboutUs() {
             </span>
             <div className="mt-16 mb-4">
               <span className="text-2xl font-bold text-[#FFFFFF80]">
-                @GabrieleBarberio
+                @DavideSimone
               </span>
             </div>
           </div>
@@ -73,17 +73,15 @@ function AboutUs() {
               />
             </div>
             <h2 className="text-3xl font-bold my-8 text-[#D9D9D9]">
-              Jonna Geronico
+              Jonna Geronimo
             </h2>
             <div>{/* role banner */}</div>
             <span className="text-xl font-bold my-8 text-[#D9D9D9]">
-              Studente di Develhope appassionato
-              <br />
-              di arte, storia, cucina e innovazione.
+            Mediatrice culturale e  studentessa <br />a Develhope,  con un debole per l'arte,<br /> le digital humanities,  il game design <br/> e il caffè che scorre nelle vene.
             </span>
             <div className="mt-16 mb-4">
               <span className="text-2xl font-bold text-[#FFFFFF80]">
-                @GabrieleBarberio
+                @JonnaGeronimo
               </span>
             </div>
           </div>
