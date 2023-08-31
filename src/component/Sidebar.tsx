@@ -144,7 +144,7 @@ export const Sidebar = ({ handleClicked }: SidebarProps) => {
                   console.log(user);
 
                   return (
-                    <div key={i}>
+                    <div key={i} className="flex justify-center w-[91%]">
                       <SidebarButton
                         user_name={user.user_name}
                         img={GabrieleBarberio}
