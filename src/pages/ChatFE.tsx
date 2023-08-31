@@ -50,11 +50,14 @@ export const ChatFE = () => {
 
     socket.on("chatMessage", (message: Message) => {
       console.log("user connect", author);
+      console.log("from socket:", message);
 
       // console.log(message);
     });
 
     return () => {
+      console.log("soket connection closed");
+
       socket.disconnect(); // Chiudi la connessione WebSocket quando il componente è smontato
     };
   }, []); // Connessione aperta quando il componente viene montato
@@ -66,15 +69,11 @@ export const ChatFE = () => {
       from: author._id,
       to: recipientId,
     };
-    console.log("author:", author);
-    console.log("author id:", author._id);
 
     // Ricezione dei messaggi dal server
-    dispatch(addMessage(message));
-    console.log("author:", author);
-    console.log("message:", message);
-
     socket.emit("chatMessage", message);
+    dispatch(addMessage(message));
+    console.log("from handle send message:", message);
   };
 
   const handleClicked = (_id: string, user_name: string): void => {
@@ -83,11 +82,13 @@ export const ChatFE = () => {
   };
   return (
     <>
-      <div className="flex w-4/4 bg-blacky-300">
-        <Sidebar handleClicked={handleClicked} />
+      <div className="flex h-full w-full bg-blacky-300">
+        <div>
+          <Sidebar handleClicked={handleClicked} />
+        </div>
         <div className="w-3/4">
           <Header
-            handleSendMessage={handleSendMessage}
+            handleSendMessages={handleSendMessage}
             messages={messages}
             recepientNick={recepientNick}
           />

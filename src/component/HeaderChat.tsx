@@ -1,15 +1,19 @@
-import GabrieleBarberio from "../assets/GabrieleBaberio.png";
+import { useSelector } from "react-redux";
+import Mascotte from "../assets/mascottelogo.png";
 import { Bubble } from "./Bubble";
 import { SendForm } from "./SendForm";
 
-export const Header = ({ handleSendMessage, messages, recepientNick }) => {
+export const Header = ({ handleSendMessages, messages, recepientNick }) => {
+  const me = useSelector((s) => s.auth);
   return (
     <div className="bg-blacky-300 w-4/4 h-screen">
-      <div className="flex justify-between  items-center border-solid border-b border-gray-300">
+      <div className="flex justify-between  items-center border-solid border-b border-borderColor">
         <div className="flex ml-2 items-center gap-3 m-4">
-          <img src={GabrieleBarberio} alt="" />
+          <img src={Mascotte} className=" w-[80px]" alt="" />
           <div>
-            <h1 className="text-white text-lg "> {recepientNick}</h1>
+            <h1 className="text-white text-lg ">
+              {recepientNick.charAt(0).toUpperCase() + recepientNick.slice(1)}
+            </h1>
             <p className="text-secondary-100"> Il mio stato </p>
           </div>
         </div>
@@ -59,18 +63,22 @@ export const Header = ({ handleSendMessage, messages, recepientNick }) => {
       </div>
 
       {/* BOX CHAT ED INPUT */}
-      <div className="col flex-col gap-9 h-[63vh] overflow-y-scroll">
+      <div className="flex flex-col gap-9 h-[700px] overflow-y-scroll">
         {/* DIV BOX CHAT */}
-        <div className=" flex-col h-full m-2 ">
+        <div className=" flex-col h-full gap-4 p-8 ">
           {messages &&
             messages.map((message: object, i: number) => (
-              <Bubble key={i} author={message.from} message={message.content} />
+              <Bubble
+                key={i}
+                author={message.from == me._id ? me.user_name : recepientNick}
+                message={message.content}
+              />
             ))}
         </div>
         {/* DIV FORM SEND TXT */}
       </div>
-      <div className="">
-        <SendForm onSubmit={handleSendMessage} />
+      <div>
+        <SendForm onSubmit={handleSendMessages} />
       </div>
     </div>
   );

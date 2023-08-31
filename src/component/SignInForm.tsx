@@ -110,7 +110,7 @@ export const SignInForm = () => {
           </Link>
         </span>
       </div>
-      <ToastContainer /> {/* Add this component to show toast messages */}
+      <ToastContainer />
     </>
   );
 };

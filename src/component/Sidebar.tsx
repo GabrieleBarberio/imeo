@@ -1,5 +1,5 @@
 import logoimeo from "../assets/logoimeo.png";
-import GabrieleBarberio from "../assets/GabrieleBaberio.png";
+import Mascotte from "../assets/mascottelogo.png";
 import { useEffect, useState } from "react";
 import { CoupledBtn } from "./shared/CoupledBtn";
 import { useSelector } from "react-redux";
@@ -57,17 +57,14 @@ export const Sidebar = ({ handleClicked }: SidebarProps) => {
 
   return (
     <>
-      <div className="bg-blacky-300 w-[25%] flex-col h-[100%] ">
+      <div className="bg-blacky-300 flex-col">
         {/* DIV CHE WRAPPA ASIDE */}
-        <div className="">
-          <div className="flex justify-center">
-            <img src={logoimeo} alt="logoimeo" className="w-[100px]" />
-          </div>
 
-          <div className="flex flex-row items-centers justify-between mr-4 mb-4 text-center">
+        <div className="flex flex-col  justify-center">
+          <img src={logoimeo} alt="logoimeo" className=" m-auto w-[100px]" />
+          <div className="flex flex-row items-start justify-between mr-4 mb-4 text-center">
             <p className="font-bold text-white ml-4 mb-2 text-center">
-              {" "}
-              Friends{" "}
+              Friends
             </p>
             <CoupledBtn
               contentLeft={
@@ -133,40 +130,36 @@ export const Sidebar = ({ handleClicked }: SidebarProps) => {
               }
             />
           </div>
+        </div>
 
-          <div>
-            {" "}
-            {/* DIV CHE WRAPPA TUTTI GLI UTENTI  */}
-            {/* PRIMI TRE BOTTONI DEGLI AMICI/UTENTI */}
-            <div className="overflow-y-scroll h-[50vh] flex flex-col justify-between items-center grow mb-5 ">
-              {users &&
-                users.map((user, i: number) => {
-                  console.log(user);
+        {/* DIV CHE WRAPPA TUTTI GLI UTENTI  */}
+        {/* PRIMI TRE BOTTONI DEGLI AMICI/UTENTI */}
+        <div className=" overflow-y-scroll h-[600px] gap-3 flex flex-col justify-center items-center mb-5">
+          {users &&
+            users.map((user, i: number) => {
+              console.log(user);
 
-                  return (
-                    <div key={i} className="flex justify-center w-[91%]">
-                      <SidebarButton
-                        user_name={user.user_name}
-                        img={GabrieleBarberio}
-                        handleClick={() =>
-                          handleClicked(user._id, user.user_name)
-                        }
-                      />
-                    </div>
-                  );
-                })}
-            </div>
-            {/* MY ACCOUNT */}
-            <div className="flex-col justify-center">
-              <p className="font-bold text-white ml-4 mb-2"> My Account </p>
-              <div className="flex items-center justify-center">
-                <SidebarButton
-                  user_name={author.user_name}
-                  img={GabrieleBarberio}
-                  handleClick={() => handleClicked(author._id)}
-                />
-              </div>
-            </div>
+              return (
+                <div key={i}>
+                  <SidebarButton
+                    user_name={user.user_name}
+                    img={Mascotte}
+                    handleClick={() => handleClicked(user._id, user.user_name)}
+                  />
+                </div>
+              );
+            })}
+        </div>
+
+        {/* MY ACCOUNT */}
+        <div className="flex-col justify-center p-1 border-borderColor border-t">
+          <p className="font-bold text-white ml-4 mb-2"> My Account </p>
+          <div className="flex items-center justify-center">
+            <SidebarButton
+              user_name={author.user_name}
+              img={Mascotte}
+              handleClick={() => handleClicked(author._id)}
+            />
           </div>
         </div>
       </div>
