@@ -16,7 +16,7 @@ export const ChatFE = () => {
   const sorted = roomName.split("-").sort().join("-");
   const room = sorted;
   const chatURL = `http://localhost:3030/api/chat/`;
-  const socket: Socket = io("http://localhost:3030"); // Connessione socket al server
+  const socket: Socket = io("http://localhost:3030/"); // Connessione socket al server
 
   const joinRoom = () => {
     if (recipientId && recipientId !== "") {
@@ -31,7 +31,7 @@ export const ChatFE = () => {
       to: recipientId,
     };
     // Ricezione dei messaggi dal server
-    socket.emit("sendMessage", message);
+    socket.emit("sendMessage", message, room);
     console.log("from handle send message:", message);
     dispatch(addMessage(message));
   };
@@ -60,26 +60,22 @@ export const ChatFE = () => {
   };
 
   useEffect(() => {
-    //commessione alla room"Room"  da rednere dinamico in base agli utenti
     socket.on("connect", () => {
       console.log("Connessione WebSocket stabilita con successo.");
     });
-
-    joinRoom();
-    socket.on("recieveMessage", (message: Message) => {
-      console.log("user connect", author);
-      console.log("from socket:", message);
-      console.log(message);
-
-      // console.log(message);
+    socket.onAny((eventName) => {
+      console.log(eventName);
     });
+    socket.on("receiveMessage", (message) =>
+      console.log("from recieve", message)
+    );
 
     socket.on("errorMessage", (error) => {
       console.error("Errore nella connessione WebSocket:", error);
     });
 
     return () => {
-      console.log("soket connection closed");
+      console.log("Connessione WebSocket disattivata.");
 
       socket.disconnect(); // Chiudi la connessione WebSocket quando il componente è smontato
     };
