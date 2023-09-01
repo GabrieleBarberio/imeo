@@ -56,9 +56,9 @@ function AboutUs() {
               <img src={frontendrole} />
               </div>
             <span className="text-xl font-bold my-8 text-[#D9D9D9] text-center">
-              Studente della classe FS13 di DevelHope,
+              Studente  di DevelHope appassionato
               <br />
-              amante della musica e del Web3.0
+              di musica e del Web3.0
             </span>
             <div className="mt-16 mb-4">
               <span className="text-2xl font-bold text-[#FFFFFF80]">
