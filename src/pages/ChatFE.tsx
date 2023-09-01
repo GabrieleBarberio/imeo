@@ -14,10 +14,10 @@ import { RootState } from "../store";
  * messagges: []
  * filter
  */
-type SendMessageFunction = (socket: Socket, message: Message) => void;
+
 export const ChatFE = () => {
   const messages = useSelector((s: RootState) => s.chat.messages);
-  const [recepientNick, setRecipientNick] = useState<string>("");
+  const [recepientNick, setRecipientNick] = useState<string | null>("");
   const author = useSelector((s: RootState) => s.auth);
   const dispatch = useDispatch();
   const [recipientId, setRecipientId] = useState<string>("");
@@ -79,7 +79,7 @@ export const ChatFE = () => {
     console.log("from handle send message:", message);
   };
 
-  const handleClicked = (_id: string, user_name: string): void => {
+  const handleClicked = (_id: string, user_name?: string): void => {
     setRecipientId(_id);
     setRecipientNick(user_name);
     socket.emit("joinRoom", room);
