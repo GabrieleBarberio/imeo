@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { login } from "../store/authSlice";
+import { AuthState, login } from "../store/authSlice";
 import { ToastContainer, toast } from "react-toastify";
 
 interface LoginFormState {
   user_name: string;
   password: string;
-}
-interface res {
-  token: string;
-  user_name: string;
 }
 
 export const LoginForm: React.FC = () => {
@@ -33,7 +29,7 @@ export const LoginForm: React.FC = () => {
       });
 
       if (res.ok) {
-        const result: res = await res.json();
+        const result: AuthState = await res.json();
         dispatch(login(result));
 
         console.log(result);

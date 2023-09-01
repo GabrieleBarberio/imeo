@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { SidebarButton } from "./SidebarButton";
 
 interface SidebarProps {
-  handleClicked: (_id: string) => void;
+  handleClicked: (_id: string, user_name?: string | undefined) => void;
 }
 interface User {
   createdAt: string;
@@ -20,16 +20,16 @@ interface User {
 
 interface AuthState {
   token: string;
-  user_name: string;
+  user_name?: string | undefined;
   _id: string;
 }
 type RootState = {
   auth: AuthState;
 };
 
-export const Sidebar = ({ handleClicked }: SidebarProps) => {
+export const Sidebar = (props: SidebarProps) => {
   const [users, setUsers] = useState<User[]>([]);
-  const author = useSelector<RootState>((s) => s.auth);
+  const author = useSelector((s: RootState) => s.auth);
 
   const fetchUsers = async (): Promise<void> => {
     try {
@@ -144,7 +144,9 @@ export const Sidebar = ({ handleClicked }: SidebarProps) => {
                   <SidebarButton
                     user_name={user.user_name}
                     img={Mascotte}
-                    handleClick={() => handleClicked(user._id, user.user_name)}
+                    handleClick={() =>
+                      props.handleClicked(user._id, user.user_name)
+                    }
                   />
                 </div>
               );
@@ -158,7 +160,7 @@ export const Sidebar = ({ handleClicked }: SidebarProps) => {
             <SidebarButton
               user_name={author.user_name}
               img={Mascotte}
-              handleClick={() => handleClicked(author._id)}
+              handleClick={() => props.handleClicked(author._id)}
             />
           </div>
         </div>

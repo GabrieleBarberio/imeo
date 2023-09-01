@@ -17,13 +17,40 @@ import { RootState } from "../store";
 
 export const ChatFE = () => {
   const messages = useSelector((s: RootState) => s.chat.messages);
-  const [recepientNick, setRecipientNick] = useState<string>("");
+  const [recepientNick, setRecipientNick] = useState<string | undefined>("");
   const author = useSelector((s: RootState) => s.auth);
   const dispatch = useDispatch();
   const [recipientId, setRecipientId] = useState<string>("");
-  const room = `${recipientId}-${author._id}`;
+  const roomName = `${recipientId}-${author._id}`;
+  const sorted = roomName.split("-").sort().join("-");
+  const room = sorted;
   const chatURL = `http://localhost:3030/api/chat/`;
   const socket: Socket = io("http://localhost:3030"); // Connessione socket al server
+
+  const joinRoom = () => {
+    if (recipientId && recipientId !== "") {
+      socket.emit("joinRoom", room);
+    }
+  };
+  const handleSendMessage = (content: string) => {
+    const message: Message = {
+      author: author,
+      content,
+      from: author._id,
+      to: recipientId,
+    };
+
+    // Ricezione dei messaggi dal server
+    socket.emit("sendMessage", message);
+    console.log("from handle send message:", message);
+    dispatch(addMessage(message));
+  };
+
+  const handleClicked = (_id: string, user_name?: string | undefined): void => {
+    setRecipientId(_id);
+    setRecipientNick(user_name);
+    joinRoom();
+  };
 
   const fetchMessages = async () => {
     try {
@@ -35,6 +62,7 @@ export const ChatFE = () => {
       });
       const history = await res.json();
       dispatch(setMessages(history));
+
       console.log("history:", history);
     } catch (error) {
       console.log(error);
@@ -42,15 +70,18 @@ export const ChatFE = () => {
   };
 
   useEffect(() => {
-    if (recipientId !== "") fetchMessages();
+    if (recipientId && recipientId !== "") {
+      fetchMessages();
+    }
   }, [recipientId]);
 
   useEffect(() => {
-    socket.emit("joinRoom", room); //commessione alla room"Room"  da rednere dinamico in base agli utenti
+    //commessione alla room"Room"  da rednere dinamico in base agli utenti
 
     socket.on("recieveMessage", (message: Message) => {
       console.log("user connect", author);
       console.log("from socket:", message);
+      console.log(message);
 
       // console.log(message);
     });
@@ -62,24 +93,6 @@ export const ChatFE = () => {
     };
   }, []); // Connessione aperta quando il componente viene montato
 
-  const handleSendMessage = (content: string) => {
-    const message: Message = {
-      author: author,
-      content,
-      from: author._id,
-      to: recipientId,
-    };
-
-    // Ricezione dei messaggi dal server
-    socket.emit("sendMessage", message);
-    dispatch(addMessage(message));
-    console.log("from handle send message:", message);
-  };
-
-  const handleClicked = (_id: string, user_name: string): void => {
-    setRecipientId(_id);
-    setRecipientNick(user_name);
-  };
   return (
     <>
       <div className="flex h-full w-full bg-blacky-300">
@@ -88,7 +101,7 @@ export const ChatFE = () => {
         </div>
         <div className="w-3/4">
           <Header
-            handleSendMessages={handleSendMessage}
+            handleSendMessage={handleSendMessage}
             messages={messages}
             recepientNick={recepientNick}
           />

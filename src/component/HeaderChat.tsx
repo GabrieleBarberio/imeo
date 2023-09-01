@@ -2,9 +2,17 @@ import { useSelector } from "react-redux";
 import Mascotte from "../assets/mascottelogo.png";
 import { Bubble } from "./Bubble";
 import { SendForm } from "./SendForm";
+import { Message } from "../store/messageSlice";
+import { RootState } from "../store";
 
-export const Header = ({ handleSendMessages, messages, recepientNick }) => {
-  const me = useSelector((s) => s.auth);
+interface HeaderProps {
+  handleSendMessage: (content: string) => void;
+  messages: Message[];
+  recepientNick?: string | undefined;
+}
+export const Header = (props: HeaderProps) => {
+  const me = useSelector((s: RootState) => s.auth);
+  const recepientNick = props.recepientNick || "";
   return (
     <div className="bg-blacky-300 w-4/4 h-screen">
       <div className="flex justify-between  items-center border-solid border-b border-borderColor">
@@ -66,8 +74,8 @@ export const Header = ({ handleSendMessages, messages, recepientNick }) => {
       <div className="flex flex-col gap-9 h-[700px] overflow-y-scroll">
         {/* DIV BOX CHAT */}
         <div className=" flex-col h-full gap-4 p-8 ">
-          {messages &&
-            messages.map((message: object, i: number) => (
+          {props.messages &&
+            props.messages.map((message: Message, i: number) => (
               <Bubble
                 key={i}
                 author={message.from == me._id ? me.user_name : recepientNick}
@@ -78,7 +86,7 @@ export const Header = ({ handleSendMessages, messages, recepientNick }) => {
         {/* DIV FORM SEND TXT */}
       </div>
       <div>
-        <SendForm onSubmit={handleSendMessages} />
+        <SendForm onSubmit={props.handleSendMessage} />
       </div>
     </div>
   );

@@ -1,3 +1,5 @@
+//  @ts-nocheck
+
 import logoText from "../assets/logotxt.png";
 import banner from "../assets/logotextrounded.png";
 import logoType from "../assets/logoimeo.png";
@@ -6,9 +8,6 @@ import mascotte from "../assets/mascottelogo.png";
 import { CoupledBtn } from "../component/shared/CoupledBtn";
 import { Sidebar } from "../component/Sidebar";
 export const DesignSystem = () => {
-  const handleClick = () => {
-    console.log("Clicked!");
-  };
   return (
     <>
       <div className=" v-screen h-screen bg-blacky-100 flex flex-col">
@@ -367,7 +366,7 @@ export const DesignSystem = () => {
             <span className="text-white font-bold text-2xl">Buttons</span>
           </div>
           <div className="flex justify-between items-center">
-            <button onClick={handleClick} className="rounded-btn">
+            <button className="rounded-btn">
               <i className=" mx-auto my-auto">
                 <svg
                   width="26"
@@ -384,18 +383,12 @@ export const DesignSystem = () => {
               </i>
             </button>
 
-            <button className="primary-btn" onClick={handleClick}>
+            <button className="primary-btn">Live Editor</button>
+            <button className="disabled" disabled={true}>
               Live Editor
             </button>
-            <button className="disabled" disabled={true} onClick={handleClick}>
-              Live Editor
-            </button>
-            <button className="site-btn" onClick={handleClick}>
-              Registrati
-            </button>
-            <button className="site-xl-btn" onClick={handleClick}>
-              Registrati
-            </button>
+            <button className="site-btn">Registrati</button>
+            <button className="site-xl-btn">Registrati</button>
             <button className="site-secondary">APP</button>
             <CoupledBtn
               contentLeft={
@@ -459,7 +452,6 @@ export const DesignSystem = () => {
                   </svg>
                 </i>
               }
-              handleClick={handleClick}
             />
           </div>
           <div>

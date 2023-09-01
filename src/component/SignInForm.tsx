@@ -4,11 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 interface FormValues {
-  first_name: string;
-  last_name: string;
-  user_name: string;
-  email: string;
-  password: string;
+  [key: string]: string;
 }
 
 export const SignInForm = () => {
@@ -46,8 +42,11 @@ export const SignInForm = () => {
   const handleSubmit: ReactEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const formData = new FormData(formRef.current!);
-    const formValues: FormValues = Object.fromEntries(formData);
 
+    const formValues: FormValues = {};
+    formData.forEach((value, key) => {
+      formValues[key] = value.toString();
+    });
     signUser(formValues);
   };
 

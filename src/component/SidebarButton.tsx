@@ -1,7 +1,7 @@
 interface SidebarButtonProps {
   handleClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   img: string;
-  user_name: string;
+  user_name?: string | undefined;
 
   // handleClick:(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
