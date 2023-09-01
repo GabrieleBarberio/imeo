@@ -6,15 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Message, addMessage, setMessages } from "../store/messageSlice";
 import { RootState } from "../store";
 
-// type Chat = m[];
-
-/**
- *
- * room: room ,
- * messagges: []
- * filter
- */
-
 export const ChatFE = () => {
   const messages = useSelector((s: RootState) => s.chat.messages);
   const [recepientNick, setRecipientNick] = useState<string | undefined>("");
@@ -39,7 +30,6 @@ export const ChatFE = () => {
       from: author._id,
       to: recipientId,
     };
-
     // Ricezione dei messaggi dal server
     socket.emit("sendMessage", message);
     console.log("from handle send message:", message);
@@ -63,21 +53,19 @@ export const ChatFE = () => {
       const history = await res.json();
       dispatch(setMessages(history));
 
-      console.log("history:", history);
+      // console.log("history:", history);s
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    if (recipientId && recipientId !== "") {
-      fetchMessages();
-    }
-  }, [recipientId]);
-
-  useEffect(() => {
     //commessione alla room"Room"  da rednere dinamico in base agli utenti
+    socket.on("connect", () => {
+      console.log("Connessione WebSocket stabilita con successo.");
+    });
 
+    joinRoom();
     socket.on("recieveMessage", (message: Message) => {
       console.log("user connect", author);
       console.log("from socket:", message);
@@ -86,12 +74,21 @@ export const ChatFE = () => {
       // console.log(message);
     });
 
+    socket.on("errorMessage", (error) => {
+      console.error("Errore nella connessione WebSocket:", error);
+    });
+
     return () => {
       console.log("soket connection closed");
 
       socket.disconnect(); // Chiudi la connessione WebSocket quando il componente è smontato
     };
   }, []); // Connessione aperta quando il componente viene montato
+  useEffect(() => {
+    if (recipientId && recipientId !== "") {
+      fetchMessages();
+    }
+  }, [recipientId]);
 
   return (
     <>

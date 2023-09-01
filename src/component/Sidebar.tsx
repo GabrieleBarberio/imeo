@@ -43,7 +43,7 @@ export const Sidebar = (props: SidebarProps) => {
         throw new Error("fail fetch user");
       }
       const users: User[] = await response.json();
-      console.log("users:", users);
+      // console.log("users:", users);
       setUsers(users);
     } catch (error) {
       console.log(error);
@@ -137,7 +137,7 @@ export const Sidebar = (props: SidebarProps) => {
         <div className=" overflow-y-scroll h-[600px] gap-3 flex flex-col mb-5">
           {users &&
             users.map((user, i: number) => {
-              console.log(user);
+              // console.log(user);
 
               return (
                 <div key={i}>

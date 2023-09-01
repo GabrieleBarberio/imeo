@@ -11,7 +11,6 @@ interface BubbleProps {
 export const Bubble = (props: BubbleProps) => {
   const author = useSelector((s: RootState) => s.auth.user_name);
   const currentUser: boolean = props.author === author;
-  console.log(props);
   const bubbleRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
