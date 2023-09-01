@@ -5,6 +5,7 @@ import DavideSimone from "../assets/davide-transparent.png";
 import JonnaGeronimo from "../assets/jonna-transparent.png";
 import EdoardoRicca from "../assets/edoardo-transparent.png";
 import DanieleLupo from "../assets/daniele-transparent.png";
+import frontendrole from "../assets/frontendRole.png"
 
 function AboutUs() {
   return (
@@ -28,7 +29,7 @@ function AboutUs() {
             <div>
               <img src={role} />
             </div>
-            <span className="text-xl font-bold my-8 text-[#D9D9D9]">
+            <span className="text-xl font-bold my-8 text-[#D9D9D9] text-center">
               Studente di Develhope appassionato
               <br />
               di arte, storia, cucina e innovazione.
@@ -51,8 +52,10 @@ function AboutUs() {
             <h2 className="text-3xl font-bold my-8 text-[#D9D9D9]">
               Davide Simone
             </h2>
-            <div>{/* role banner */}</div>
-            <span className="text-xl font-bold my-8 text-[#D9D9D9]">
+            <div>
+              <img src={frontendrole} />
+              </div>
+            <span className="text-xl font-bold my-8 text-[#D9D9D9] text-center">
               Studente della classe FS13 di DevelHope,
               <br />
               amante della musica e del Web3.0
@@ -75,11 +78,13 @@ function AboutUs() {
             <h2 className="text-3xl font-bold my-8 text-[#D9D9D9]">
               Jonna Geronimo
             </h2>
-            <div>{/* role banner */}</div>
-            <span className="text-xl font-bold my-8 text-[#D9D9D9]">
+            <div>
+              <img src={frontendrole} />
+            </div>
+            <span className="text-xl font-bold my-8 text-[#D9D9D9] text-center">
             Mediatrice culturale e  studentessa <br />a Develhope,  con un debole per l'arte,<br /> le digital humanities,  il game design <br/> e il caffè che scorre nelle vene.
             </span>
-            <div className="mt-16 mb-4">
+            <div className="mt-2 mb-4">
               <span className="text-2xl font-bold text-[#FFFFFF80]">
                 @JonnaGeronimo
               </span>
@@ -97,15 +102,15 @@ function AboutUs() {
             <h2 className="text-3xl font-bold my-8 text-[#D9D9D9]">
               Edoardo Ricca
             </h2>
-            <div>{/* role banner */}</div>
-            <span className="text-xl font-bold my-8 text-[#D9D9D9]">
-              Studente di Develhope appassionato
-              <br />
-              di arte, storia, cucina e innovazione.
+            <div>
+              <img src={frontendrole} />
+            </div>
+            <span className="text-xl font-bold my-8 text-[#D9D9D9] text-center">
+            Studente di programmazione Full-stack <br/ > interessatosi al mondo IT dopo aver <br/>concluso gli studi universitari in ambito <br/> economico, amante del trekking e del <br /> disegno astratto.
             </span>
-            <div className="mt-16 mb-4">
+            <div className="mt-2 mb-4">
               <span className="text-2xl font-bold text-[#FFFFFF80]">
-                @GabrieleBarberio
+                @EdoardoRicca
               </span>
             </div>
           </div>
@@ -121,15 +126,15 @@ function AboutUs() {
             <h2 className="text-3xl font-bold my-8 text-[#D9D9D9]">
               Daniele Lupo
             </h2>
-            <div>{/* role banner */}</div>
-            <span className="text-xl font-bold my-8 text-[#D9D9D9]">
-              Studente di Develhope appassionato
-              <br />
-              di arte, storia, cucina e innovazione.
+            <div>
+               <img src={frontendrole} />            
+            </div>
+            <span className="text-xl font-bold my-8 text-[#D9D9D9] text-center">
+            Studente Full-Stack appassionato di <br /> musica,  videogiochi, tecnologia e lingue <br />straniere.
             </span>
             <div className="mt-16 mb-4">
               <span className="text-2xl font-bold text-[#FFFFFF80]">
-                @GabrieleBarberio
+                @DanieleLupo
               </span>
             </div>
           </div>
