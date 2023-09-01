@@ -48,7 +48,7 @@ export const ChatFE = () => {
   useEffect(() => {
     socket.emit("joinRoom", room); //commessione alla room"Room"  da rednere dinamico in base agli utenti
 
-    socket.on("chatMessage", (message: Message) => {
+    socket.on("recieveMessage", (message: Message) => {
       console.log("user connect", author);
       console.log("from socket:", message);
 
@@ -71,7 +71,7 @@ export const ChatFE = () => {
     };
 
     // Ricezione dei messaggi dal server
-    socket.emit("chatMessage", message);
+    socket.emit("sendMessage", message);
     dispatch(addMessage(message));
     console.log("from handle send message:", message);
   };
