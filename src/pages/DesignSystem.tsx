@@ -18,7 +18,7 @@ export const DesignSystem = () => {
             IMEO - DESIGN SYSTEM
           </h1>
         </div>
-        <div className="flex basis-6/12 gap-10  ">
+        <div className="flex basis-6/12 gap-10 justify-center">
           <div className="flex flex-col gap-10">
             <div className="flex flex-col bg-blacky-200 p-5 rounded-2xl">
               <div>
@@ -360,9 +360,7 @@ export const DesignSystem = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="flex flex-col bg-blacky-200 text-white p-5 rounded-xl">
+            <div className="flex flex-col bg-blacky-200 text-white p-5 rounded-xl">
           <div>
             <span className="text-white font-bold text-2xl">Buttons</span>
           </div>
@@ -462,10 +460,8 @@ export const DesignSystem = () => {
               handleClick={handleClick}
             />
           </div>
-          <div>
-            {" "}
-            <Sidebar />
           </div>
+        </div>
         </div>
       </div>
     </>
