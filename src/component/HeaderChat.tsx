@@ -2,9 +2,11 @@ import { useSelector } from "react-redux";
 import Mascotte from "../assets/mascottelogo.png";
 import { Bubble } from "./Bubble";
 import { SendForm } from "./SendForm";
+import { RootState } from "../store";
+import { Message } from "../store/messageSlice";
 
 export const Header = ({ handleSendMessages, messages, recepientNick }) => {
-  const me = useSelector((s) => s.auth);
+  const me = useSelector((s: RootState) => s.auth);
   return (
     <div className="bg-blacky-300 w-4/4 h-screen">
       <div className="flex justify-between  items-center border-solid border-b border-borderColor">
@@ -67,7 +69,7 @@ export const Header = ({ handleSendMessages, messages, recepientNick }) => {
         {/* DIV BOX CHAT */}
         <div className=" flex-col h-full gap-4 p-8 ">
           {messages &&
-            messages.map((message: object, i: number) => (
+            messages.map((message: Message, i: number) => (
               <Bubble
                 key={i}
                 author={message.from == me._id ? me.user_name : recepientNick}

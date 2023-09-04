@@ -46,7 +46,7 @@ export const SignInForm = () => {
   const handleSubmit: ReactEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const formData = new FormData(formRef.current!);
-    const formValues: FormValues = Object.fromEntries(formData);
+    const formValues = Object.fromEntries(formData);
 
     signUser(formValues);
   };

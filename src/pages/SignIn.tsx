@@ -1,6 +1,5 @@
 import { SignInForm } from "../component/SignInForm";
 import logo from "../assets/logoimeo.png";
-import bg from "../assets/bg.png";
 
 export const SignIn = () => {
   // const handleLogin = () => {};

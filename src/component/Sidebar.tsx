@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { SidebarButton } from "./SidebarButton";
 
 interface SidebarProps {
-  handleClicked: (_id: string) => void;
+  handleClicked: (_id: string, user_name?: string) => void;
 }
 interface User {
   createdAt: string;
@@ -29,7 +29,7 @@ type RootState = {
 
 export const Sidebar = ({ handleClicked }: SidebarProps) => {
   const [users, setUsers] = useState<User[]>([]);
-  const author = useSelector<RootState>((s) => s.auth);
+  const author = useSelector((s: RootState) => s.auth);
 
   const fetchUsers = async (): Promise<void> => {
     try {
@@ -134,7 +134,7 @@ export const Sidebar = ({ handleClicked }: SidebarProps) => {
 
         {/* DIV CHE WRAPPA TUTTI GLI UTENTI  */}
         {/* PRIMI TRE BOTTONI DEGLI AMICI/UTENTI */}
-        <div className=" overflow-y-scroll h-[600px] gap-3 flex flex-col justify-center items-center mb-5">
+        <div className=" overflow-y-scroll h-[600px] gap-3 flex flex-col  mb-5">
           {users &&
             users.map((user, i: number) => {
               console.log(user);
