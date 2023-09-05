@@ -1,80 +1,112 @@
 import { Sidebar } from "../component/Sidebar";
 import { Header } from "../component/HeaderChat";
 import { useEffect, useState } from "react";
-import { io, Socket } from "socket.io-client";
+import { io } from "socket.io-client";
 import { useDispatch, useSelector } from "react-redux";
 import { Message, addMessage, setMessages } from "../store/messageSlice";
 import { RootState } from "../store";
+import fetchData from "../utility/fetchData";
+import axios from "axios";
 
 export const ChatFE = () => {
   const messages = useSelector((s: RootState) => s.chat.messages);
   const [recepientNick, setRecipientNick] = useState<string | undefined>("");
   const [recipientId, setRecipientId] = useState<string>("");
-  const [socketConnected, setSocketConnected] = useState<boolean>(false);
+  const [recipientRoom, setRecipientRoom] = useState("");
+  const [history, setHistory] = useState<Message[]>([]);
   const author = useSelector((s: RootState) => s.auth);
   const dispatch = useDispatch();
-  const roomName = `${recipientId}-${author._id}`;
-  const sorted = roomName.split("-").sort().join("-");
-  const room = sorted;
+  const userRoom = author._id;
 
   const chatURL = `http://localhost:3030/api/chat/`;
-  const socket: Socket = io("http://localhost:3030/"); // Connessione socket al server
-  const joinRoom = () => {
-    if (recipientId && recipientId !== "") {
-      socket.emit("joinRoom", room);
-    }
+  const socket = io(`http://localhost:3040`, {
+    auth: (cb) => {
+      cb({ token: author.token });
+    },
+  }); // Connessione socket al server + invio token
+
+  const { data } = fetchData(chatURL, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${author.token}`,
+    },
+  });
+
+  const getHistory = () => {
+    const history = messages.filter((message) => {
+      console.log(message, recipientId, author._id);
+
+      return (
+        message.from === author._id ||
+        message.from === recipientId ||
+        message.to === recipientId ||
+        message.to === author._id
+      );
+    });
+    setHistory(history);
   };
-  const handleSendMessage = (content: string) => {
-    if (socketConnected) {
-      const message: Message = {
-        author: author,
-        content,
-        from: author._id,
-        to: recipientId,
-      };
-      // Ricezione dei messaggi dal server
-      socket.emit("sendMessage", message, room);
+
+  const joinRoom = () => {
+    socket.emit("joinRoom", userRoom);
+  };
+
+  const handleSendMessage = async (content: string) => {
+    const message: Message = {
+      content,
+      from: author._id,
+      to: recipientId,
+    };
+    console.log(message);
+
+    try {
+      const res = await axios({
+        url: chatURL + "message",
+        method: "POST",
+        data: {
+          room: recipientRoom,
+          message,
+        },
+        headers: {
+          authorization: `Bearer ${author.token}`,
+        },
+      });
       console.log("from handle send message:", message);
+      console.log("res:", res.status);
       dispatch(addMessage(message));
-    } else {
-      console.error("Attendere la connessione al server Socket");
+    } catch (err) {
+      console.error("Errore durante la chiamata API:", err);
     }
   };
 
   const handleClicked = (_id: string, user_name?: string | undefined): void => {
     setRecipientId(_id);
+    setRecipientRoom(_id);
     setRecipientNick(user_name);
-    joinRoom();
-  };
 
-  const fetchMessages = async () => {
-    try {
-      const res = await fetch(`${chatURL}/${room}`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${author.token}`,
-        },
-      });
-      const history = await res.json();
-      dispatch(setMessages(history));
-
-      // console.log("history:", history);s
-    } catch (error) {
-      console.log(error);
-    }
+    // getHistory();
+    console.log("history:", history);
   };
   useEffect(() => {
-    console.log(socketConnected);
-  }, [socketConnected]);
+    getHistory();
+    console.log("history:", history);
+  }, [messages]);
 
   useEffect(() => {
+    console.log(data);
+    dispatch(setMessages(data));
+  }, [data]);
+
+  useEffect(() => {
+    getHistory();
+
     socket.on("connect", () => {
       console.log("Connessione WebSocket stabilita con successo.");
     });
+    joinRoom();
 
-    setSocketConnected(true);
+    socket.on("sendMessage", (message) => {
+      console.log("sendMessage:", message);
 
-    socket.on("receiveMessage", (message) => {
       dispatch(addMessage(message));
     });
 
@@ -85,14 +117,9 @@ export const ChatFE = () => {
     return () => {
       console.log("Connessione WebSocket disattivata.");
 
-      socket.disconnect(); // Chiudi la connessione WebSocket quando il componente è smontato
+      socket.disconnect(); // Chiud la connessione WebSocket quando il componente è smontato
     };
   }, []); // Connessione aperta quando il componente viene montato
-  useEffect(() => {
-    if (recipientId && recipientId !== "") {
-      fetchMessages();
-    }
-  }, [recipientId]);
 
   return (
     <>
@@ -103,7 +130,7 @@ export const ChatFE = () => {
         <div className="w-3/4">
           <Header
             handleSendMessage={handleSendMessage}
-            messages={messages}
+            messages={history}
             recepientNick={recepientNick}
           />
         </div>

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface Message {
-  author: object ;
+
   content: string ;
   from: string;
   to: string ;
@@ -23,6 +23,8 @@ const messageSlice = createSlice({
       state.messages = action.payload;
     },
     addMessage: (state, action: PayloadAction<Message>) => {
+      console.log("from addMessage", action.payload);
+
       state.messages.push(action.payload);
     },
   },

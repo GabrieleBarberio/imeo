@@ -14,6 +14,7 @@ export const Bubble = (props: BubbleProps) => {
   const bubbleRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    console.log("from bubble", props.message);
     if (bubbleRef.current) {
       bubbleRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
     }
