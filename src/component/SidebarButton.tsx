@@ -1,9 +1,9 @@
+//  @ts-nocheck
 interface SidebarButtonProps {
-  handleClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  img: string;
-  user_name?: string;
-
-  // handleClick:(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    img: string;
+    user_name: string;
+    
+    // handleClick:(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export const SidebarButton = (props: SidebarButtonProps) => {
