@@ -88,7 +88,7 @@ export const ChatFE = () => {
     setRecipientStatus(status);
 
     getHistory();
-    console.log("history:", history);
+    // console.log("history:", history);
   };
   useEffect(() => {
     getHistory();

@@ -148,7 +148,7 @@ export const Sidebar = (props: SidebarProps) => {
                     handleClick={() =>
                       props.handleClicked(user._id, user.user_name, user.status)
                     }
-                    status={author.status}
+                    status={user.status}
                   />
                 </div>
               );
