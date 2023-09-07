@@ -29,7 +29,7 @@ export const SendForm: React.FC<SendFormProps> = ({ onSubmit }) => {
         className="min-w-[230px] w-[90%] mt-1 flex items-center absolute "
       >
         <input
-          className="w-[90%]  border-none p-4 rounded-lg bg-secondary-400 text-white"
+          className="w-[100%]  border-none p-4 rounded-lg bg-secondary-400 text-white"
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
           autoComplete="off"

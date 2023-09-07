@@ -19,12 +19,13 @@ export const Header = ({ handleSendMessages, messages, recepientNick }) => {
             <p className="text-secondary-100"> Il mio stato </p>
           </div>
         </div>
+
         <div className="flex gap-2 mr-2">
           <button className="rounded-btn">
             <i className=" mx-auto my-auto">
               <svg
-                width="26"
-                height="26"
+                width="23"
+                height="23"
                 viewBox="0 0 45 45"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -37,11 +38,11 @@ export const Header = ({ handleSendMessages, messages, recepientNick }) => {
             </i>
           </button>
 
-          <button className="primary-btn">
+          <button className="rounded-btn">
             <i>
               <svg
-                width="16"
-                height="16"
+                width="23"
+                height="23"
                 viewBox="0 0 45 45 "
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -61,11 +62,13 @@ export const Header = ({ handleSendMessages, messages, recepientNick }) => {
               </svg>
             </i>
           </button>
+
+          
         </div>
       </div>
 
       {/* BOX CHAT ED INPUT */}
-      <div className="flex flex-col gap-9 h-[700px] overflow-y-scroll">
+      <div className="flex flex-col gap-9 h-[695px] overflow-y-scroll">
         {/* DIV BOX CHAT */}
         <div className=" flex-col h-full gap-4 p-8 ">
           {messages &&
