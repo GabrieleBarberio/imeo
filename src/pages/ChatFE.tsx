@@ -10,9 +10,10 @@ import axios from "axios";
 
 export const ChatFE = () => {
   const messages = useSelector((s: RootState) => s.chat.messages);
-  const [recepientNick, setRecipientNick] = useState<string | undefined>("");
+  const [recepientNick, setRecipientNick] = useState<string>("");
   const [recipientId, setRecipientId] = useState<string>("");
   const [recipientRoom, setRecipientRoom] = useState("");
+  const [recipientStatus, setRecipientStatus] = useState("");
   const [history, setHistory] = useState<Message[]>([]);
   const author = useSelector((s: RootState) => s.auth);
   const dispatch = useDispatch();
@@ -37,10 +38,8 @@ export const ChatFE = () => {
       console.log(message, recipientId, author._id);
 
       return (
-        message.from === author._id ||
-        message.from === recipientId ||
-        message.to === recipientId ||
-        message.to === author._id
+        (message.from === author._id || message.from === recipientId) &&
+        (message.to === recipientId || message.to === author._id)
       );
     });
     setHistory(history);
@@ -78,18 +77,23 @@ export const ChatFE = () => {
     }
   };
 
-  const handleClicked = (_id: string, user_name?: string | undefined): void => {
+  const handleClicked = (
+    _id: string,
+    user_name: string,
+    status: string
+  ): void => {
     setRecipientId(_id);
     setRecipientRoom(_id);
     setRecipientNick(user_name);
+    setRecipientStatus(status);
 
-    // getHistory();
-    console.log("history:", history);
+    getHistory();
+    // console.log("history:", history);
   };
   useEffect(() => {
     getHistory();
     console.log("history:", history);
-  }, [messages]);
+  }, [messages, recipientId]);
 
   useEffect(() => {
     console.log(data);
@@ -131,6 +135,7 @@ export const ChatFE = () => {
           <Header
             handleSendMessage={handleSendMessage}
             messages={history}
+            status={recipientStatus}
             recepientNick={recepientNick}
           />
         </div>

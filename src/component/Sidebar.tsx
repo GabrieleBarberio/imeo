@@ -6,22 +6,22 @@ import { useSelector } from "react-redux";
 import { SidebarButton } from "./SidebarButton";
 
 interface SidebarProps {
-  handleClicked: (_id: string, user_name?: string | undefined) => void;
+  handleClicked: (_id: string, user_name: string, status: string) => void;
 }
 interface User {
   createdAt: string;
   email: string;
-  first_name: string;
-  last_name: string;
   updatedAt: string;
   user_name: string;
+  status: string;
   _id: string;
 }
 
 interface AuthState {
   token: string;
-  user_name?: string | undefined;
+  user_name: string;
   _id: string;
+  status: string;
 }
 type RootState = {
   auth: AuthState;
@@ -45,6 +45,7 @@ export const Sidebar = (props: SidebarProps) => {
       const users: User[] = await response.json();
       // console.log("users:", users);
       setUsers(users);
+      console.log(users);
     } catch (error) {
       console.log(error);
       throw error;
@@ -145,8 +146,9 @@ export const Sidebar = (props: SidebarProps) => {
                     user_name={user.user_name}
                     img={Mascotte}
                     handleClick={() =>
-                      props.handleClicked(user._id, user.user_name)
+                      props.handleClicked(user._id, user.user_name, user.status)
                     }
+                    status={user.status}
                   />
                 </div>
               );
@@ -160,7 +162,10 @@ export const Sidebar = (props: SidebarProps) => {
             <SidebarButton
               user_name={author.user_name}
               img={Mascotte}
-              handleClick={() => props.handleClicked(author._id)}
+              handleClick={() =>
+                props.handleClicked(author._id, author.user_name, author.status)
+              }
+              status={author.status}
             />
           </div>
         </div>
