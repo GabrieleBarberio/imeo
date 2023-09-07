@@ -38,7 +38,7 @@ export const Header = ({ handleSendMessages, messages, recepientNick }) => {
             </i>
           </button>
 
-          <button className="primary-btn">
+          <button className="rounded-btn">
             <i>
               <svg
                 width="23"
