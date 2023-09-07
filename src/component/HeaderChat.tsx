@@ -8,7 +8,8 @@ import { RootState } from "../store";
 interface HeaderProps {
   handleSendMessage: (content: string) => void;
   messages: Message[];
-  recepientNick?: string | undefined;
+  recepientNick: string;
+  status: string;
 }
 export const Header = (props: HeaderProps) => {
   const me = useSelector((s: RootState) => s.auth);
@@ -20,9 +21,10 @@ export const Header = (props: HeaderProps) => {
           <img src={Mascotte} className=" w-[80px]" alt="" />
           <div>
             <h1 className="text-white text-lg ">
-              {recepientNick.charAt(0).toUpperCase() + recepientNick.slice(1)}
+              {props.recepientNick.charAt(0).toUpperCase() +
+                props.recepientNick.slice(1)}
             </h1>
-            <p className="text-secondary-100"> Il mio stato </p>
+            <p className="text-secondary-100">{props.status}</p>
           </div>
         </div>
         <div className="flex gap-2 mr-2">

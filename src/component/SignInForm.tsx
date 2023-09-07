@@ -68,18 +68,6 @@ export const SignInForm = () => {
           <div className="flex flex-col gap-2">
             <input
               type="text"
-              placeholder="Enter first name"
-              className="input-form"
-              name="first_name"
-            />
-            <input
-              type="text"
-              placeholder="Enter last name"
-              className="input-form"
-              name="last_name"
-            />
-            <input
-              type="text"
               placeholder="Enter a username"
               className="input-form"
               name="user_name"
@@ -95,6 +83,12 @@ export const SignInForm = () => {
               placeholder="Insert Password"
               className="input-form"
               name="password"
+            />
+            <input
+              type="text"
+              placeholder="Enter your initial status(you'll be able to change it later)"
+              className="input-form"
+              name="status"
             />
           </div>
 

@@ -1,7 +1,8 @@
 interface SidebarButtonProps {
   handleClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   img: string;
-  user_name?: string | undefined;
+  user_name: string;
+  status: string;
 
   // handleClick:(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
@@ -16,7 +17,7 @@ export const SidebarButton = (props: SidebarButtonProps) => {
         <img src={props.img} alt="profilepic" className="w-[60px]" />
         <div className=" flex flex-col items-start">
           <h3 className="text-white"> {props.user_name} </h3>
-          <p className="text-secondary-100 items-start">Offline</p>
+          <p className="text-secondary-100 items-start">{props.status}</p>
         </div>
       </button>
     </>
