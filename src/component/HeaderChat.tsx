@@ -22,7 +22,7 @@ export const Header = (props: HeaderProps) => {
             <h1 className="text-white text-lg ">
               {recepientNick.charAt(0).toUpperCase() + recepientNick.slice(1)}
             </h1>
-            <p className="text-secondary-100"> Il mio stato </p>
+            <p className="text-secondary-100"> Ciao io sono {recepientNick} </p>
           </div>
         </div>
         <div className="flex gap-2 mr-2">
@@ -43,11 +43,11 @@ export const Header = (props: HeaderProps) => {
             </i>
           </button>
 
-          <button className="primary-btn">
+          <button className="rounded-btn">
             <i>
               <svg
-                width="16"
-                height="16"
+                width="23"
+                height="23"
                 viewBox="0 0 45 45 "
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

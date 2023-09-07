@@ -37,7 +37,7 @@ export const SendForm: React.FC<SendFormProps> = ({ onSubmit }) => {
         />
         <button
           type="submit"
-          className="border-none absolute left-[82%] rounded-lg p-1 bg-secondary-400"
+          className="border-none relative right-[100px] rounded-lg p-1 bg-secondary-400"
         >
           <i>
             <svg

@@ -10,7 +10,7 @@ export const SidebarButton = (props: SidebarButtonProps) => {
   return (
     <>
       <button
-        className="flex  items-center gap-3 min-w-[400px] p-3 bg-secondary-400 border border-borderColor rounded-xl "
+        className="flex  items-center gap-3 min-w-[400px] p-3 bg-secondary-400 border border-borderColor rounded-xl hover:bg-primary-300"
         onClick={props.handleClick}
       >
         <img src={props.img} alt="profilepic" className="w-[60px]" />
