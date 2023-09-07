@@ -18,6 +18,8 @@ export const SidebarButton = (props: SidebarButtonProps) => {
           <h3 className="text-white"> {props.user_name} </h3>
           <p className="text-secondary-100 items-start">Offline</p>
         </div>
+
+        
         
           {/* <span class="inline-flex items-center justify-center p-2 mr-2 ml-2 text-xs font-bold text-white bg-secondary-100 rounded-xl">
             Nuovo Messaggio!

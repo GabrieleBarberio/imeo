@@ -16,7 +16,7 @@ export const Header = ({ handleSendMessages, messages, recepientNick }) => {
             <h1 className="text-white text-lg ">
               {recepientNick.charAt(0).toUpperCase() + recepientNick.slice(1)}
             </h1>
-            <p className="text-secondary-100"> Il mio stato </p>
+            <p className="text-secondary-100"> Ciao io sono {recepientNick} </p>
           </div>
         </div>
 
