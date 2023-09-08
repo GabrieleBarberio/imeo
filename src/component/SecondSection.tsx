@@ -1,4 +1,4 @@
-import bannerspec from "../assets/banner firsdt imeo spec.png";
+import bannerspec from "../assets/chat.png";
 import line from "../assets/line.png";
 
 export const SecondSection = () => {

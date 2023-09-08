@@ -1,10 +1,17 @@
-import member from "../assets/member.png";
+
 import role from "../assets/teamRole.png";
+import GabrieleBarberio from "../assets/gabriele-transparent.png";
+import DavideSimone from "../assets/davide-transparent.png";
+import JonnaGeronimo from "../assets/jonna-transparent.png";
+import EdoardoRicca from "../assets/edoardo-transparent.png";
+import DanieleLupo from "../assets/daniele-transparent.png";
+import frontendrole from "../assets/front-endRole.png"
+
 
 function AboutUs() {
   return (
     <>
-      <div className="max-w-mww mx-auto py-64 relative z-10 mww:px-0 px-12">
+     <div className="max-w-mww mx-auto py-64 relative z-10 mww:px-0 px-12">
         <h3 className="text-center text-3xl font-bold text-[#FFFFFF] mb-24">
           ABOUT US
         </h3>
@@ -13,7 +20,7 @@ function AboutUs() {
             <div className="w-32 h-32">
               <img
                 className="max-w-full h-auto rounded-[54px] border-4 border-[#4B2B6A]"
-                src={member}
+                src={GabrieleBarberio}
                 alt="Picture of a member"
               />
             </div>
@@ -23,7 +30,7 @@ function AboutUs() {
             <div>
               <img src={role} />
             </div>
-            <span className="text-xl font-bold my-8 text-[#D9D9D9]">
+            <span className="text-xl font-bold my-8 text-[#D9D9D9] text-center">
               Studente di Develhope appassionato
               <br />
               di arte, storia, cucina e innovazione.
@@ -38,23 +45,49 @@ function AboutUs() {
           <div className="flex flex-col items-center py-8 px-4 rounded-[104px] border-[6px] border-[#4B2B6A] bg-[#1E0E1F94]">
             <div className="w-32 h-32">
               <img
-                className="max-w-full h-auto rounded-[54px] border-4 border-[#4B2B6A]"
-                src={member}
+                className="w-full h-full object-contain rounded-[54px] border-4 border-[#4B2B6A]"
+                src={DavideSimone}
                 alt="Picture of a member"
               />
             </div>
             <h2 className="text-3xl font-bold my-8 text-[#D9D9D9]">
-              Gabriele Barberio
+              Davide Simone
             </h2>
-            <div>{/* role banner */}</div>
-            <span className="text-xl font-bold my-8 text-[#D9D9D9]">
-              Studente di Develhope appassionato
+            <div>
+              <img src={frontendrole} />
+              </div>
+            <span className="text-xl font-bold my-8 text-[#D9D9D9] text-center">
+              Studente  di DevelHope appassionato
               <br />
-              di arte, storia, cucina e innovazione.
+              di musica e del Web3.0
             </span>
             <div className="mt-16 mb-4">
               <span className="text-2xl font-bold text-[#FFFFFF80]">
-                @GabrieleBarberio
+                @DavideSimone
+              </span>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center py-8 px-4 rounded-[104px] border-[6px] border-[#4B2B6A] bg-[#1E0E1F94]">
+            <div className="w-32 h-32">
+              <img
+                className="w-full h-full object-contain rounded-[54px] border-4 border-[#4B2B6A]"
+                src={JonnaGeronimo}
+                alt="Picture of a member"
+              />
+            </div>
+            <h2 className="text-3xl font-bold my-8 text-[#D9D9D9]">
+              Jonna Geronimo
+            </h2>
+            <div>
+              <img src={frontendrole} />
+            </div>
+            <span className="text-xl font-bold my-8 text-[#D9D9D9] text-center">
+            Mediatrice culturale e  studentessa <br />a Develhope,  con un debole per l'arte,<br /> le digital humanities,  il game design <br/> e il caffè che scorre nelle vene.
+            </span>
+            <div className="mt-2 mb-4">
+              <span className="text-2xl font-bold text-[#FFFFFF80]">
+                @JonnaGeronimo
               </span>
             </div>
           </div>
@@ -63,22 +96,22 @@ function AboutUs() {
             <div className="w-32 h-32">
               <img
                 className="max-w-full h-auto rounded-[54px] border-4 border-[#4B2B6A]"
-                src={member}
+                src={EdoardoRicca}
                 alt="Picture of a member"
               />
             </div>
             <h2 className="text-3xl font-bold my-8 text-[#D9D9D9]">
-              Gabriele Barberio
+              Edoardo Ricca
             </h2>
-            <div>{/* role banner */}</div>
-            <span className="text-xl font-bold my-8 text-[#D9D9D9]">
-              Studente di Develhope appassionato
-              <br />
-              di arte, storia, cucina e innovazione.
+            <div>
+              <img src={frontendrole} />
+            </div>
+            <span className="text-xl font-bold my-8 text-[#D9D9D9] text-center">
+            Studente di programmazione Full-stack <br/ > interessatosi al mondo IT dopo aver <br/>concluso gli studi universitari in ambito <br/> economico, amante del trekking e del <br /> disegno astratto.
             </span>
-            <div className="mt-16 mb-4">
+            <div className="mt-2 mb-4">
               <span className="text-2xl font-bold text-[#FFFFFF80]">
-                @GabrieleBarberio
+                @EdoardoRicca
               </span>
             </div>
           </div>
@@ -86,47 +119,23 @@ function AboutUs() {
           <div className="flex flex-col items-center py-8 px-4 rounded-[104px] border-[6px] border-[#4B2B6A] bg-[#1E0E1F94]">
             <div className="w-32 h-32">
               <img
-                className="max-w-full h-auto rounded-[54px] border-4 border-[#4B2B6A]"
-                src={member}
+                className="w-full h-full object-contain rounded-[54px] border-4 border-[#4B2B6A]"
+                src={DanieleLupo}
                 alt="Picture of a member"
               />
             </div>
             <h2 className="text-3xl font-bold my-8 text-[#D9D9D9]">
-              Gabriele Barberio
+              Daniele Lupo
             </h2>
-            <div>{/* role banner */}</div>
-            <span className="text-xl font-bold my-8 text-[#D9D9D9]">
-              Studente di Develhope appassionato
-              <br />
-              di arte, storia, cucina e innovazione.
+            <div>
+               <img src={frontendrole} />            
+            </div>
+            <span className="text-xl font-bold my-8 text-[#D9D9D9] text-center">
+            Studente Full-Stack appassionato di <br /> musica,  videogiochi, tecnologia e lingue <br />straniere.
             </span>
             <div className="mt-16 mb-4">
               <span className="text-2xl font-bold text-[#FFFFFF80]">
-                @GabrieleBarberio
-              </span>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center py-8 px-4 rounded-[104px] border-[6px] border-[#4B2B6A] bg-[#1E0E1F94]">
-            <div className="w-32 h-32">
-              <img
-                className="max-w-full h-auto rounded-[54px] border-4 border-[#4B2B6A]"
-                src={member}
-                alt="Picture of a member"
-              />
-            </div>
-            <h2 className="text-3xl font-bold my-8 text-[#D9D9D9]">
-              Gabriele Barberio
-            </h2>
-            <div>{/* role banner */}</div>
-            <span className="text-xl font-bold my-8 text-[#D9D9D9]">
-              Studente di Develhope appassionato
-              <br />
-              di arte, storia, cucina e innovazione.
-            </span>
-            <div className="mt-16 mb-4">
-              <span className="text-2xl font-bold text-[#FFFFFF80]">
-                @GabrieleBarberio
+                @DanieleLupo
               </span>
             </div>
           </div>

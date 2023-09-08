@@ -1,5 +1,7 @@
-import bannereditor from "../assets/bannereditor.png";
+import bannereditor from "../assets/bannereditornew.png";
 import line from "../assets/line.png";
+
+
 
 export const ThirdSection = () => {
   return (
